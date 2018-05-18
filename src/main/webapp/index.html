@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Form</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- include the style -->
+  <link rel="stylesheet" href="css/alertify.css" />
+  <!-- include a theme -->
+  <link rel="stylesheet" href="css/themes/default.min.css" />
+</head>
+<body>
+    <div class="container">
+    <div class="wrapper">
+      <img src="img/idblogo.jpg" class="img">
+      <ul class="steps">
+        <li class="is-active">Initial Details</li>
+      </ul>
+      <form class="form-wrapper" id="myform">
+        <fieldset class="section is-active">
+          <h3>IDBNY PD Questionnaire</h3>
+          <input type="text" name="name" id="name" placeholder="Account Office Name">
+          <input type="text" name="Client" id="Client" placeholder="CIF#/Customer name">
+          <input type="number" name="rating" id="rating" placeholder="Borrower Rating">
+          <select class ="formsSelect">
+            <option value="0">Please choose the desired form</option>
+          </select>
+          <div class="button">Start</div>
+        </fieldset>
+      </form>
+    </div>
+    </div>
+        <div class="canvasDiv">
+        <canvas id="myChart"></canvas>
+        </div>
+     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <script src="js/index.js"></script>
+    <!-- include the script -->
+    <script src="js/alertify.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+</body>
+
+
+</html>
