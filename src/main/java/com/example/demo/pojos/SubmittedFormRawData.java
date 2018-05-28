@@ -1,14 +1,15 @@
 
 package com.example.demo.pojos;
 
+import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class SubmittedFormRawData {
 
-    @SerializedName("submittedFormRawData")
+    @SerializedName("qa")
     @Expose
-    private SubmittedFormRawData_ submittedFormRawData;
+    private List<Qa> qa = null;
 
     /**
      * No args constructor for use in serialization
@@ -19,19 +20,19 @@ public class SubmittedFormRawData {
 
     /**
      * 
-     * @param submittedFormRawData
+     * @param qa
      */
-    public SubmittedFormRawData(SubmittedFormRawData_ submittedFormRawData) {
+    public SubmittedFormRawData(List<Qa> qa) {
         super();
-        this.submittedFormRawData = submittedFormRawData;
+        this.qa = qa;
     }
 
-    public SubmittedFormRawData_ getSubmittedFormRawData() {
-        return submittedFormRawData;
+    public List<Qa> getQa() {
+        return qa;
     }
 
-    public void setSubmittedFormRawData(SubmittedFormRawData_ submittedFormRawData) {
-        this.submittedFormRawData = submittedFormRawData;
+    public void setQa(List<Qa> qa) {
+        this.qa = qa;
     }
 
 }

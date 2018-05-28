@@ -18,6 +18,8 @@ public class FormSubmission {
 
     private double pdScore;
 
+    @Lob
+    @Column
     private String submittedFormRawData;
 
     public FormSubmission(){}//No argument constructor for JPA
