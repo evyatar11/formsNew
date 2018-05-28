@@ -1,8 +1,9 @@
 package com.example.demo.services;
 
+import com.example.demo.DTOs.SubmittedFormDTO;
 import com.example.demo.daos.FormSubmissionDAO;
 import com.example.demo.jpaEnities.FormSubmission;
-import com.example.demo.pojos.FormSubmissionPojo;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -16,8 +17,17 @@ public class SubmittedFormService {
 	@Qualifier("mySql")
 	private FormSubmissionDAO formSubmissionDao;
 
-    public FormSubmission submitForm(FormSubmissionPojo form) {
-		return formSubmissionDao.submitForm(form);
+    public FormSubmission submitForm(SubmittedFormDTO form) {
+        Gson gson = new Gson();
+        FormSubmission tempForm = new FormSubmission();
+        tempForm.setAccountOfficeName(form.getAccountOfficeName());
+        tempForm.setBorrowerRating(Double.valueOf(form.getBorrowerRating()));
+        tempForm.setCustomerName(form.getCustomerName());
+        tempForm.setPdScore(Double.valueOf(form.getPdScore()));
+        String jsonString = gson.toJson(form.getSubmittedFormRawData());
+        System.out.println("JsonString: " + jsonString);
+        tempForm.setSubmittedFormRawData(jsonString);
+        return formSubmissionDao.submitForm(tempForm);
     }
 
     public List<FormSubmission> getSubmittedForms() {
