@@ -4,7 +4,7 @@ html, body{
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
-  background-color: #D2691E;
+  background-color: #f8a01f;
 }
 
 h1, h2, h3, h4, h5 ,h6{
@@ -315,7 +315,7 @@ input.valid, textarea.valid{
 }
 
 #gradeAffect{
-  margin: 17px auto;
+  margin-top: 17px;
   width: 20%;
 }
 
