@@ -103,7 +103,7 @@ $(document).ready(function(){
             formScore += ( catPercent * catScoreSum) / 100;
         }
 
-        formScore = formScore.toPrecision(5);
+        formScore = formScore.toPrecision(3);
         var accountName = $('#name').val();
         var customerName = $('#Client').val();
         var borrowerRating = $('#rating').val();
@@ -128,7 +128,7 @@ $(document).ready(function(){
                 //grab the dialog instance using its parameter-less constructor then set multiple settings at once.
                 alertify.alert()
                     .setting({
-                        'label':'Show Graph',
+                        'label':'Show Results Comparison',
                         'title' : 'From submitted successfully!',
                         'message': 'Based on your assessment the score of ' + registeredFormData.customerName +' is: ' +registeredFormData.pdScore + '!' ,
                         'onok': function(){ getChartData(registeredFormData);}
@@ -174,10 +174,10 @@ $(document).ready(function(){
                     var answerGrade = $("option:selected", this).attr('id');
                     if (answerGrade != -1){
                         var accGrade = ( catPercentage / 100 ) * ( questionPercentage / 100 ) * answerGrade;
-                        $(this.parentElement).find("span").text("Score contribution: " +accGrade.toPrecision(4));
+                        $(this.parentElement).find("span").text("Score contribution: " +accGrade.toPrecision(2));
                     }
                     else{
-                        $(this.parentElement).find("span").text("Score contribution: 0.000");
+                        $(this.parentElement).find("span").text("Score contribution: 0.00");
                     }
                 });
 
@@ -269,90 +269,90 @@ $(document).ready(function(){
                     ,
                     {
                         showLine : false,
-                        label: 'Your Form Score',
+                        label: 'Current Assessment',
                         data: myRegisteredFormData,
-                        backgroundColor: 'rgba(255,215,0)', //Gold
-                        borderColor: 'rgba(255,215,0)', //Gold
+                        backgroundColor: 'rgba(0,0,0)', //Black
+                        borderColor: 'rgba(0,0,0)', //Black
                     }
                     ,
                     {
                         showLine : false,
                         label: 'Rating 1',
                         data: rating1,
-                        backgroundColor: 'rgb(216, 112, 37)', //Orange ish
-                        borderColor: 'rgb(216, 112, 37)', //Orange ish
+                        backgroundColor: 'rgb(0, 204, 0)', //Dark Green
+                        borderColor: 'rgb(0, 204, 0)', //Dark Green
                     }
                     ,
                     {
                         showLine : false,
                         label: 'Rating 2',
                         data: rating2,
-                        backgroundColor: 'rgb(255, 99, 132)', //Light red
-                        borderColor: 'rgb(255, 99, 132)', //Light red
+                        backgroundColor: 'rgb(102, 204, 0)', //Light Green
+                        borderColor: 'rgb(102, 204, 0)', //Light Green
                     }
                     ,
                     {
                         showLine : false,
                         label: 'Rating 3',
                         data: rating3,
-                        backgroundColor: 'rgb(240, 235, 37)', //Dark yellow
-                        borderColor: 'rgb(240, 235, 37)', //Dark yellow
+                        backgroundColor: 'rgb(0, 204, 204)', //Light Blue
+                        borderColor: 'rgb((0, 204, 204)', //Light Blue
                     }
                     ,
                     {
                         showLine : false,
                         label: 'Rating 4',
                         data: rating4,
-                        backgroundColor: 'rgb(127, 218, 37)', //Green
-                        borderColor: 'rgb(127, 218, 37)', //Green
+                        backgroundColor: 'rgb(0, 102, 204)', //Dark Blue
+                        borderColor: 'rgb(0, 102, 204)', //Dark Blue
                     }
                     ,
                     {
                         showLine : false,
                         label: 'Rating 5',
                         data: rating5,
-                        backgroundColor: 'rgb(117, 75, 37)', //Brown
-                        borderColor: 'rgb(117, 75, 37)', //Brown
+                        backgroundColor: 'rgb(255, 255, 51)', //Yellow
+                        borderColor: 'rgb(255, 255, 51)', //Yellow
                     }
                     ,
                     {
                         showLine : false,
                         label: 'Rating 6',
                         data: rating6,
-                        backgroundColor: 'rgb(117, 75, 170)', //Purple
-                        borderColor: 'rgb(117, 75, 170)', //Purple
+                        backgroundColor: 'rgb(255, 178, 102)', //Light Orange
+                        borderColor: 'rgb(255, 178, 102)', //Light Orange
                     }
                     ,
                     {
                         showLine : false,
                         label: 'Rating 7',
                         data: rating7,
-                        backgroundColor: 'rgb(91, 94, 195)', //Blue
-                        borderColor: 'rgb(91, 94, 195)', //Blue
+                        backgroundColor: 'rgb(255, 128, 0)', //Dark Orange
+                        borderColor: 'rgb(255, 128, 0)', //Dark Orange
                     }
                     ,
                     {
                         showLine : false,
                         label: 'Rating 8',
                         data: rating8,
-                        backgroundColor: 'rgb(0, 0, 0)', //Black
-                        borderColor: 'rgb(0, 0, 0)', //Black
+                        backgroundColor: 'rgb(243, 114, 88)', //Light Red
+                        borderColor: 'rgb(243, 114, 88)', //Light Red
                     }
                     ,
                     {
                         showLine : false,
                         label: 'Rating 9',
                         data: rating9,
-                        backgroundColor: 'rgb(255, 129, 186)', //Pink
-                        borderColor: 'rgb(255, 129, 186)', //Pink
+                        backgroundColor: 'rgb(255, 102, 102)', //Mid Red
+                        borderColor: 'rgb(255, 102, 102)', //Mid Red
                     }
                     ,
                     {
                         showLine : false,
                         label: 'Rating 10',
                         data: rating10,
-                        backgroundColor: 'rgb(192,192,192)', //Silver
-                        borderColor: 'rgb(192,192,192)', //Silver
+                        backgroundColor: 'rgb(204,0,0)', //Dark Red
+                        borderColor: 'rgb(204,0,0)', //Dark Red
                     }
 
                 ],
@@ -362,7 +362,7 @@ $(document).ready(function(){
                 width:1500,
                 height:1200,
                 legend: {
-                    position: 'top',
+                    position: 'bottom',
                 },
                 hover: {
                     mode: 'index'
@@ -379,14 +379,14 @@ $(document).ready(function(){
                         display: true,
                         scaleLabel: {
                             display: true,
-                            labelString: 'PD score'
+                            labelString: 'Assessment Score'
                         }
                     }]
                 },
                 title: {
                     fontSize: 30,
                     display: true,
-                    text: 'Distribution of scores per borrower rating'
+                    text: ['Score distribution per borrower rating','(Higher score means lower PD)']
                 }
             }
         });
