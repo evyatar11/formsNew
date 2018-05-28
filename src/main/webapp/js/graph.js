@@ -12,7 +12,15 @@ $(document).ready(function(){
     var ctx = document.getElementById('myChart').getContext('2d');
     var backgroundColors = [];
     var borderColors = [];
-    var data = [ 11.76,9.56,16.54,8.65,18.95,11.11,7.65];
+    var data = [
+        // {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0},{x:4,y:0},{x:5,y:0},{x:6,y:0},{x:7,y:0},{x:8,y:0},{x:9,y:0},{x:10,y:0},
+        {x:1,y:12.33},{x:1,y:6.789},{x:3,y:8.96},{x:2,y:2.33},{x:4,y:6.789},{x:5,y:8.96},{x:6,y:2.33},{x:7,y:6.789},{x:8,y:8.96},{x:9,y:16.789},
+        {x:1,y:2.33},{x:1,y:6.789},{x:3,y:8.96},{x:2,y:2.33},{x:4,y:6.789},{x:5,y:8.96},{x:6,y:12.33},{x:7,y:6.789},{x:8,y:18.96},{x:9,y:6.789},
+        {x:1,y:2.33},{x:1,y:16.789},{x:3,y:8.96},{x:2,y:2.33},{x:4,y:6.789},{x:5,y:8.96},{x:6,y:2.33},{x:7,y:6.789},{x:8,y:8.96},{x:9,y:6.789}
+        ];
+    var xyisPoints = [
+        {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0},{x:4,y:0},{x:5,y:0},{x:6,y:0},{x:7,y:0},{x:8,y:0},{x:9,y:0},{x:10,y:0}
+        ];
     for (i=0;i<data.length;i++){
         if (i==3){
             //Red color and border - the newly filled form
@@ -27,20 +35,100 @@ $(document).ready(function(){
     }
     var borrowerRating = 14;
     var scatterChart = new Chart(ctx, {
-        type: 'line',
+        type: 'scatter',
         data: {
-            labels: ['Google', 'Sap', 'Amazon', 'Microsoft', 'Wix', 'Nice', 'Apple'],
-            datasets: [{
-                showLine : false,
-                label: 'PD score',
-                data: data,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 0.2)',
-                fill: false,
-                borderDash: [5, 5],
-                pointRadius: 15,
-                pointHoverRadius: 10,
-            }],
+            labels: 'Scatter DataSet',
+            datasets: [
+
+                {
+                    showLine : false,
+                    label: '',
+                    data: xyisPoints,
+                    backgroundColor: 'rgba(255, 0, 0, 0)',
+                    borderColor: 'rgba(255, 0, 0, 0)',
+                }
+                ,
+                {
+                    showLine : false,
+                    label: 'Rating 1',
+                    data: data,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                }
+                ,
+                {
+                    showLine : false,
+                    label: 'Rating 2',
+                    data: data,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                }
+                ,
+                {
+                    showLine : false,
+                    label: 'Rating 3',
+                    data: data,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                }
+                ,
+                {
+                    showLine : false,
+                    label: 'Rating 4',
+                    data: data,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                }
+                ,
+                {
+                    showLine : false,
+                    label: 'Rating 5',
+                    data: data,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                }
+                ,
+                {
+                    showLine : false,
+                    label: 'Rating 6',
+                    data: data,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                }
+                ,
+                {
+                    showLine : false,
+                    label: 'Rating 7',
+                    data: data,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                }
+                ,
+                {
+                    showLine : false,
+                    label: 'Rating 8',
+                    data: data,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                }
+                ,
+                {
+                    showLine : false,
+                    label: 'Rating 9',
+                    data: data,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                }
+                ,
+                {
+                    showLine : false,
+                    label: 'Rating 10',
+                    data: data,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                }
+
+            ],
         },
         options: {
             responsive: true,
@@ -55,7 +143,7 @@ $(document).ready(function(){
                     display: true,
                     scaleLabel: {
                         display: true,
-                        labelString: 'Client Names'
+                        labelString: 'Borrower Rating'
                     }
                 }],
                 yAxes: [{
@@ -69,16 +157,9 @@ $(document).ready(function(){
             title: {
                 fontSize: 30,
                 display: true,
-                text: 'PD scores of borrowers with rating of ' +  borrowerRating
-            },
-            subtitles:[
-                {
-                    text: "This is a Subtitle"
-                    //Uncomment properties below to see how they behave
-                    //fontColor: "red",
-                    //fontSize: 30
-                }
-            ]
+                text: 'Distribution of scores per borrower rating'
+            }
         }
     });
+
     });

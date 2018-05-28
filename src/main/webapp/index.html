@@ -22,8 +22,21 @@
           <h3>IDBNY PD Questionnaire</h3>
           <input type="text" name="name" id="name" placeholder="Account Office Name">
           <input type="text" name="Client" id="Client" placeholder="CIF#/Customer name">
-          <input type="number" name="rating" id="rating" placeholder="Borrower Rating">
-          <select class ="formsSelect">
+          <!--<input type="number" name="rating" id="rating" placeholder="Borrower Rating">-->
+            <select class ="borrowerRating" name="rating" id="rating" placeholder="Borrower Rating">
+                <option value="0">Please select borrower rating</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <select class ="initialSelect">
             <option value="0">Please choose the desired form</option>
           </select>
           <div class="button">Start</div>
