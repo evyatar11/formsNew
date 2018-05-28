@@ -5,7 +5,7 @@ $(document).ready(function(){
         type: "GET",
         url: url + "/forms/getForms",
         success: function (data) {
-            var formsSelect =  $('.formsSelect');
+            var formsSelect =  $('.initialSelect');
             $.each(data, function(key, value) {
                 formsSelect.append($("<option></option>")
                     .attr("value",value.formId)
@@ -45,8 +45,8 @@ $(document).ready(function(){
                 alertify.error('Please select a form to fill!');
                 return;
             }
-            if ($("#rating").val() == ""){
-                alertify.error('Please enter borrower rating!');
+            if ($("#rating").val() === "0"){
+                alertify.error('Please select borrower rating!');
                 return;
             }
 
@@ -86,15 +86,19 @@ $(document).ready(function(){
             }
         }
         var categories = $(".section");
+        var submittedFormData = { "qa" : []};
         var formScore = 0;
         for (i=1;i<categories.length;i++) {
             var jQueryCategoryItem = $(categories[i]);
             var catPercent = jQueryCategoryItem.attr('id');
             var categoryQuestions = $(jQueryCategoryItem.find(".question select"));
+            var categoryQuestionsTexts = $(jQueryCategoryItem.find(".question h4"));
             var categorySelectedAnswersScore = jQueryCategoryItem.find(".question option:selected");
             var catScoreSum = 0;
             for (j=0;j<categorySelectedAnswersScore.length;j++){
                 catScoreSum+= $(categoryQuestions[j]).attr('id') * $(categorySelectedAnswersScore[j]).attr('id') / 100 ;
+                submittedFormData.qa.push({"questionText":categoryQuestionsTexts[j].innerText.slice(3,-1),"answerText":categorySelectedAnswersScore[j].text});
+                // submittedFormData[categoryQuestionsTexts[j].innerText.slice(3,-1)] = categorySelectedAnswersScore[j].text;
             }
             formScore += ( catPercent * catScoreSum) / 100;
         }
@@ -108,13 +112,14 @@ $(document).ready(function(){
             accountOfficeName: accountName,
             customerName: customerName,
             borrowerRating: borrowerRating,
-            pdScore: formScore
+            pdScore: formScore,
+            submittedFormRawData: submittedFormData
         })
         topFunction();
 
         $.ajax({
             type: "POST",
-            url:  url + "/forms/submitForm",
+            url:  url + "/submittedForms/submitForm",
             contentType: 'application/json; charset=UTF-8',
             data: jsonData,
             success: function (registeredFormData) {
@@ -162,6 +167,20 @@ $(document).ready(function(){
                 for (i = 0; i < questionList.length; i++) {
                     $(".question h4")[i].innerText =  (i+1) + ") " + $(".question h4")[i].innerText + ": ";
                 }
+
+                $('.formsSelect').on('change', function (event) {
+                    var catPercentage = $(this).parents(".section").attr('id');
+                    var questionPercentage = event.target.id;
+                    var answerGrade = $("option:selected", this).attr('id');
+                    if (answerGrade != -1){
+                        var accGrade = ( catPercentage / 100 ) * ( questionPercentage / 100 ) * answerGrade;
+                        $(this.parentElement).find("span").text("Score contribution: " +accGrade.toPrecision(4));
+                    }
+                    else{
+                        $(this.parentElement).find("span").text("Score contribution: 0.000");
+                    }
+                });
+
                 //Bind click function to all buttons
                 bindButtons(sectionLength);
                 //Set on click function to last button and change text to submit
@@ -186,28 +205,10 @@ $(document).ready(function(){
         $('html').css("background-color", "#FFFFFF");
         $.ajax({
             type: "GET",
-            url: url + "/forms/getSubmittedFormsByBorrowerRating/" + registeredFormData.borrowerRating,
-            success: function (submittedFormsData) {
-                var customerNames = [];
-                var pdScores = [];
-                var backgroundColors = [];
-                var borderColors = [];
-                for (i=0;i<submittedFormsData.length;i++){
-                    customerNames.push(submittedFormsData[i].customerName);
-                    pdScores.push(submittedFormsData[i].pdScore);
-                    if (submittedFormsData[i].id == registeredFormData.id){
-                        //Red color and border - the newly filled form
-                        backgroundColors.push('rgba(255, 99, 132, 0.2)');
-                        borderColors.push('rgba(255,99,132,1)');
-                    }
-                    else{
-                        //Green color and border - the rest
-                        backgroundColors.push('rgba(75, 192, 192, 0.2)');
-                        borderColors.push('rgba(75, 192, 192, 1)');
-                    }
-                }
+            url: url + "/submittedForms/getSubmittedForms",
+            success: function (submittedForms) {
                 var ctx = document.getElementById('myChart').getContext('2d');
-                var myChart = createChart(ctx,customerNames,pdScores,backgroundColors,borderColors,registeredFormData.borrowerRating);
+                var myChart = createChart(ctx,submittedForms,registeredFormData);
             },
             error: function (e) {
                 alertify.error('An Error occurred');
@@ -215,40 +216,185 @@ $(document).ready(function(){
         });
     }
 
-    function createChart(ctx,customerNames,pdScores,backgroundColors,borderColors,currentFormRating){
+    function createChart(ctx,submittedForms,registeredFormData){
+        var xyisPoints = [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0},{x:4,y:0},{x:5,y:0},{x:6,y:0},{x:7,y:0},{x:8,y:0},{x:9,y:0},{x:10,y:0}];
+        var myRegisteredFormData = [{x:registeredFormData.borrowerRating,y:registeredFormData.pdScore}];
+        var rating1=[],rating2=[],rating3=[],rating4=[],rating5=[],rating6=[],rating7=[],rating8=[],rating9=[],rating10=[];
+        for (i=0;i<submittedForms.length;i++){
+            switch(submittedForms[i].borrowerRating) {
+                case 1:
+                    rating1.push({x:submittedForms[i].borrowerRating,y:submittedForms[i].pdScore});
+                    break;
+                case 2:
+                    rating2.push({x:submittedForms[i].borrowerRating,y:submittedForms[i].pdScore});
+                    break;
+                case 3:
+                    rating3.push({x:submittedForms[i].borrowerRating,y:submittedForms[i].pdScore});
+                    break;
+                case 4:
+                    rating4.push({x:submittedForms[i].borrowerRating,y:submittedForms[i].pdScore});
+                    break;
+                case 5:
+                    rating5.push({x:submittedForms[i].borrowerRating,y:submittedForms[i].pdScore});
+                    break;
+                case 6:
+                    rating6.push({x:submittedForms[i].borrowerRating,y:submittedForms[i].pdScore});
+                    break;
+                case 6:
+                    rating6.push({x:submittedForms[i].borrowerRating,y:submittedForms[i].pdScore});
+                    break;
+                case 8:
+                    rating8.push({x:submittedForms[i].borrowerRating,y:submittedForms[i].pdScore});
+                    break;
+                case 9:
+                    rating9.push({x:submittedForms[i].borrowerRating,y:submittedForms[i].pdScore});
+                    break;
+                case 10:
+                    rating10.push({x:submittedForms[i].borrowerRating,y:submittedForms[i].pdScore});
+                    break;
+            }
+        }
         return new Chart(ctx, {
-            type: 'horizontalBar',
+            type: 'scatter',
             data: {
-                labels: customerNames,
-                datasets: [{
-                    label: 'Score',
-                    data: pdScores,
-                    backgroundColor: backgroundColors,
-                    borderColor: borderColors,
-                    borderWidth: 1
-                }]
+                labels: 'Scatter DataSet',
+                datasets: [
+                    {
+                        showLine : false,
+                        label: '',
+                        data: xyisPoints,
+                        backgroundColor: 'rgba(255, 0, 0, 0)', //Opacity 0--> transparent
+                        borderColor: 'rgba(255, 0, 0, 0)', //Opacity 0--> transparent
+                    }
+                    ,
+                    {
+                        showLine : false,
+                        label: 'Your Form Score',
+                        data: myRegisteredFormData,
+                        backgroundColor: 'rgba(255,215,0)', //Gold
+                        borderColor: 'rgba(255,215,0)', //Gold
+                    }
+                    ,
+                    {
+                        showLine : false,
+                        label: 'Rating 1',
+                        data: rating1,
+                        backgroundColor: 'rgb(216, 112, 37)', //Orange ish
+                        borderColor: 'rgb(216, 112, 37)', //Orange ish
+                    }
+                    ,
+                    {
+                        showLine : false,
+                        label: 'Rating 2',
+                        data: rating2,
+                        backgroundColor: 'rgb(255, 99, 132)', //Light red
+                        borderColor: 'rgb(255, 99, 132)', //Light red
+                    }
+                    ,
+                    {
+                        showLine : false,
+                        label: 'Rating 3',
+                        data: rating3,
+                        backgroundColor: 'rgb(240, 235, 37)', //Dark yellow
+                        borderColor: 'rgb(240, 235, 37)', //Dark yellow
+                    }
+                    ,
+                    {
+                        showLine : false,
+                        label: 'Rating 4',
+                        data: rating4,
+                        backgroundColor: 'rgb(127, 218, 37)', //Green
+                        borderColor: 'rgb(127, 218, 37)', //Green
+                    }
+                    ,
+                    {
+                        showLine : false,
+                        label: 'Rating 5',
+                        data: rating5,
+                        backgroundColor: 'rgb(117, 75, 37)', //Brown
+                        borderColor: 'rgb(117, 75, 37)', //Brown
+                    }
+                    ,
+                    {
+                        showLine : false,
+                        label: 'Rating 6',
+                        data: rating6,
+                        backgroundColor: 'rgb(117, 75, 170)', //Purple
+                        borderColor: 'rgb(117, 75, 170)', //Purple
+                    }
+                    ,
+                    {
+                        showLine : false,
+                        label: 'Rating 7',
+                        data: rating7,
+                        backgroundColor: 'rgb(91, 94, 195)', //Blue
+                        borderColor: 'rgb(91, 94, 195)', //Blue
+                    }
+                    ,
+                    {
+                        showLine : false,
+                        label: 'Rating 8',
+                        data: rating8,
+                        backgroundColor: 'rgb(0, 0, 0)', //Black
+                        borderColor: 'rgb(0, 0, 0)', //Black
+                    }
+                    ,
+                    {
+                        showLine : false,
+                        label: 'Rating 9',
+                        data: rating9,
+                        backgroundColor: 'rgb(255, 129, 186)', //Pink
+                        borderColor: 'rgb(255, 129, 186)', //Pink
+                    }
+                    ,
+                    {
+                        showLine : false,
+                        label: 'Rating 10',
+                        data: rating10,
+                        backgroundColor: 'rgb(192,192,192)', //Silver
+                        borderColor: 'rgb(192,192,192)', //Silver
+                    }
+
+                ],
             },
             options: {
+                responsive: true,
+                width:1500,
+                height:1200,
+                legend: {
+                    position: 'top',
+                },
+                hover: {
+                    mode: 'index'
+                },
                 scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Borrower Rating'
+                        }
+                    }],
                     yAxes: [{
-                        ticks: {
-                            beginAtZero:true
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'PD score'
                         }
                     }]
                 },
                 title: {
-                    fontSize: 20,
+                    fontSize: 30,
                     display: true,
-                    text: ['Scores results of borrowers with rating of ' +  currentFormRating + ' ' , '(Higher score means lower PD)']
+                    text: 'Distribution of scores per borrower rating'
                 }
             }
         });
     }
 
-
-    // On form list change function
-    $('.form-wrapper .formsSelect').change(function(){
-        var formId = $('select[class=formsSelect]').val();
+    // On initial form list change
+    $('.form-wrapper .initialSelect').change(function(){
+        var formId = $('select[class=initialSelect]').val();
         if (formId == "0"){
             $('.button').hide();
             alertify.error('Please select a form to fill');
@@ -260,4 +406,5 @@ $(document).ready(function(){
             loadFormData(formId);
         }
     });
+
 });
