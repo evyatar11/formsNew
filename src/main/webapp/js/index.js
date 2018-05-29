@@ -220,6 +220,7 @@ $(document).ready(function(){
         var xyisPoints = [{x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0},{x:4,y:0},{x:5,y:0},{x:6,y:0},{x:7,y:0},{x:8,y:0},{x:9,y:0},{x:10,y:0}];
         var myRegisteredFormData = [{x:registeredFormData.borrowerRating,y:registeredFormData.pdScore}];
         var rating1=[],rating2=[],rating3=[],rating4=[],rating5=[],rating6=[],rating7=[],rating8=[],rating9=[],rating10=[];
+        var point = 5;
         for (i=0;i<submittedForms.length;i++){
             switch(submittedForms[i].borrowerRating) {
                 case 1:
@@ -273,6 +274,7 @@ $(document).ready(function(){
                         data: myRegisteredFormData,
                         backgroundColor: 'rgba(0,0,0)', //Black
                         borderColor: 'rgba(0,0,0)', //Black
+                        pointRadius: point
                     }
                     ,
                     {
@@ -281,6 +283,8 @@ $(document).ready(function(){
                         data: rating1,
                         backgroundColor: 'rgb(0, 204, 0)', //Dark Green
                         borderColor: 'rgb(0, 204, 0)', //Dark Green
+                        pointStyle: 'cross',
+                        pointRadius: point
                     }
                     ,
                     {
@@ -289,30 +293,36 @@ $(document).ready(function(){
                         data: rating2,
                         backgroundColor: 'rgb(102, 204, 0)', //Light Green
                         borderColor: 'rgb(102, 204, 0)', //Light Green
+                        pointStyle: 'star',
+                        pointRadius: point
                     }
                     ,
                     {
                         showLine : false,
                         label: 'Rating 3',
                         data: rating3,
-                        backgroundColor: 'rgb(0, 204, 204)', //Light Blue
-                        borderColor: 'rgb((0, 204, 204)', //Light Blue
+                        backgroundColor: 'rgb(221, 255, 51)', //Light Green with yellow tint
+                        borderColor: 'rgb((221, 255, 51)', //Light Green with yellow tint
+                        pointRadius: point
                     }
                     ,
                     {
                         showLine : false,
                         label: 'Rating 4',
                         data: rating4,
-                        backgroundColor: 'rgb(0, 102, 204)', //Dark Blue
-                        borderColor: 'rgb(0, 102, 204)', //Dark Blue
+                        backgroundColor: 'rgb(255, 255, 179)', //Bright Yellow
+                        borderColor: 'rgb(255, 255, 179)', //Bright Yellow
+                        pointRadius: point
                     }
                     ,
                     {
                         showLine : false,
                         label: 'Rating 5',
                         data: rating5,
-                        backgroundColor: 'rgb(255, 255, 51)', //Yellow
-                        borderColor: 'rgb(255, 255, 51)', //Yellow
+                        backgroundColor: 'rgb(255, 225, 71)', //Yellow
+                        borderColor: 'rgb(255, 225, 71)', //Yellow
+                        pointStyle: 'rect',
+                        pointRadius: point
                     }
                     ,
                     {
@@ -321,6 +331,8 @@ $(document).ready(function(){
                         data: rating6,
                         backgroundColor: 'rgb(255, 178, 102)', //Light Orange
                         borderColor: 'rgb(255, 178, 102)', //Light Orange
+                        pointStyle: 'circle',
+                        pointRadius: point
                     }
                     ,
                     {
@@ -329,6 +341,8 @@ $(document).ready(function(){
                         data: rating7,
                         backgroundColor: 'rgb(255, 128, 0)', //Dark Orange
                         borderColor: 'rgb(255, 128, 0)', //Dark Orange
+                        pointStyle: 'triangle',
+                        pointRadius: point
                     }
                     ,
                     {
@@ -337,6 +351,8 @@ $(document).ready(function(){
                         data: rating8,
                         backgroundColor: 'rgb(243, 114, 88)', //Light Red
                         borderColor: 'rgb(243, 114, 88)', //Light Red
+                        pointStyle: 'rectRot',
+                        pointRadius: point
                     }
                     ,
                     {
@@ -345,6 +361,7 @@ $(document).ready(function(){
                         data: rating9,
                         backgroundColor: 'rgb(255, 102, 102)', //Mid Red
                         borderColor: 'rgb(255, 102, 102)', //Mid Red
+                        pointRadius: point
                     }
                     ,
                     {
@@ -353,6 +370,7 @@ $(document).ready(function(){
                         data: rating10,
                         backgroundColor: 'rgb(204,0,0)', //Dark Red
                         borderColor: 'rgb(204,0,0)', //Dark Red
+                        pointRadius: point
                     }
 
                 ],
