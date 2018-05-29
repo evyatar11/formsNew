@@ -15,7 +15,8 @@ $(document).ready(function(){
         error: function (e) {
             alertify.error('An Error occurred');
         }
-    });
+    }
+    );
 
     function removeSectionsAndLi() {
         $('.section').each(function( index ) {
