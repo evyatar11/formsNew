@@ -250,6 +250,10 @@ $(document).ready(function(){
                 } );
                 //Show table and graph wizard
                 $('#example-vertical').css("display", "block");
+                var table = $('#tableSummary').DataTable();
+                $('#container').css( 'display', 'block' );
+                table.columns.adjust().draw();
+
             },
             error: function (e) {
                 alertify.error('An Error occurred');
