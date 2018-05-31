@@ -44,7 +44,30 @@ $(document).ready(function(){
         [ "Unity Butler", "Marketing Designer", "San Francisco", "5384", "2009/12/09", "$85,675" ]
     ];
     $('#table').DataTable( {
+        buttons: {
+            buttons: [
+                {
+                    text: 'Alert',
+                    action: function ( e, dt, node, config ) {
+                        alert( 'Activated!' );
+                        this.disable(); // disable button
+                    }
+                }
+            ]
+        },
         data: dataSet,
+        "columnDefs": [
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    return data +' ('+ row[3]+')';
+                },
+                "targets": 0
+            },
+            { "visible": false,  "targets": [ 3 ] }
+        ],
         columns: [
             { title: "Number" },
             { title: "Question" },

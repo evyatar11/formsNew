@@ -19,11 +19,6 @@ public class SubmittedFormController {
         return submittedFormService.submitForm(form);
     }
 
-//    @RequestMapping(value = "/getSubmittedFormsByBorrowerRating/{borrowerRating}", method = RequestMethod.GET)
-//    public List<FormSubmission> getSubmittedFormsByBorrowerRating(@PathVariable("borrowerRating") double borrowerRating){
-//        return submittedFormService.getSubmittedFormsByBorrowerRating(borrowerRating);
-//    }
-
     @RequestMapping(value = "/getSubmittedForms", method = RequestMethod.GET)
     public List<FormSubmission> getSubmittedForms(){
         return submittedFormService.getSubmittedForms();
