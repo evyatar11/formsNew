@@ -323,3 +323,6 @@ input.valid, textarea.valid{
 #example-vertical{
   display: none;
 }
+#tableSummary{
+  text-align: center;
+}
