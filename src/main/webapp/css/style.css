@@ -4,8 +4,10 @@ html, body{
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
-  background-color: #f8a01f;
+  /*background-color: #f8a01f !important;*/
+  background-color: #5f614c !important;
 }
+
 
 h1, h2, h3, h4, h5 ,h6{
   font-weight: 200;
@@ -20,7 +22,7 @@ p, li, a{
 }
 
 fieldset{
-  margin: 0;
+  margin: 0 !important;
   padding: 0;
   border: none;
 }
@@ -86,7 +88,7 @@ fieldset{
 
 /* STEPS */
 
-.steps{
+.form_steps{
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -95,14 +97,14 @@ fieldset{
 }
 
 
-.steps li{
+.form_steps li{
   display: inline-block;
   margin: 20px;
   color: #ccc;
   padding-bottom: 5px;
 }
 
-.steps li.is-active{
+.form_steps li.is-active{
   border-bottom: 1px solid #3498db;
   color: #3498db;
 }
@@ -299,9 +301,9 @@ input.valid, textarea.valid{
 }
 
 .canvasDiv{
-  width: 1500px;
-  height: 1200px;
-  margin-left: 10%;
+  /*width: 1500px;*/
+  /*height: 1200px;*/
+  /*margin-left: 10%;*/
 }
 
 #catTitle{
@@ -318,4 +320,6 @@ input.valid, textarea.valid{
   margin-top: 17px;
   width: 19%;
 }
-
+#example-vertical{
+  display: none;
+}
