@@ -5,7 +5,12 @@ $(document).ready(function(){
         bodyTag: "section",
         transitionEffect: "slideLeft",
         stepsOrientation: "vertical",
-
+        onFinished: function (event, currentIndex) {
+            $('#example-vertical').remove();
+            //Clear backgroundColor (White)
+            $('body').css("background-color", "#FFFFFF");
+            alertify.alert('Process finished succefully!', 'Process finished succefully!', function(){ alertify.success('Process done!'); });
+        },
     });
 
     $('.button').hide();
