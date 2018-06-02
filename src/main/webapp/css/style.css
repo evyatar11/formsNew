@@ -4,8 +4,13 @@ html, body{
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
+  background-image: url("/img/full1.jpg");
+  background-repeat: repeat-y;
+  background-size: cover;
+  height: 900px;
   /*background-color: #f8a01f !important;*/
-  background-color: #5f614c !important;
+  background-color: #EBEBEB !important;
+  /*background-image: url("/img/full.jpg");*/
 }
 
 
@@ -92,8 +97,9 @@ fieldset{
   list-style-type: none;
   margin: 0;
   padding: 0;
-  background-color: #fff;
+  background-color: #EBEBEB;
   text-align: center;
+  border-top: 1px solid #c0c0c0;
 }
 
 
@@ -105,8 +111,8 @@ fieldset{
 }
 
 .form_steps li.is-active{
-  border-bottom: 1px solid #3498db;
-  color: #3498db;
+  border-bottom: 1px solid #DA935F;
+  color: #DA935F;
 }
 
 /* FORM */
@@ -186,7 +192,7 @@ fieldset{
 }
 
 .form-wrapper .button, .form-wrapper .submit .submitBtn{
-  background-color: #3498db;
+  background-color: #DA935F;
   display: inline-block;
   padding: 8px 30px;
   color: #fff;
@@ -297,9 +303,13 @@ input.valid, textarea.valid{
 }
 
 .img{
-  width: 700px;
+  width: 30px;
 }
 
+.test{
+width: 100%;
+  margin: -124px 25px;
+}
 .canvasDiv{
   /*width: 1500px;*/
   /*height: 1200px;*/
