@@ -196,10 +196,10 @@ $(document).ready(function(){
                     var answerGrade = $("option:selected", this).attr('id');
                     if (answerGrade != -1){
                         var accGrade = ( catPercentage / 100 ) * ( questionPercentage / 100 ) * answerGrade;
-                        $(this.parentElement).find("span").text("Score contribution: " +accGrade.toPrecision(2));
+                        $(this.parentElement).find("span").text("Effective Score: " +accGrade.toPrecision(2));
                     }
                     else{
-                        $(this.parentElement).find("span").text("Score contribution: 0.00");
+                        $(this.parentElement).find("span").text("Effective Score: 0.00");
                     }
                 });
 
@@ -235,7 +235,10 @@ $(document).ready(function(){
                 //Setup table
                 $('#tableSummary').DataTable( {
                     data: finalTableColumnsData,
-                    scrollCollapse: true,
+                    scrollCollapse: false,
+                    searching: false,
+                   // lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                    iDisplayLength: 20,
                     paging:         false,
                     scrollY:        '50vh',
                     columns: [
@@ -253,6 +256,9 @@ $(document).ready(function(){
                 var table = $('#tableSummary').DataTable();
                 $('#container').css( 'display', 'block' );
                 table.columns.adjust().draw();
+            //    $('#all').on( 'click', function () {
+            //        table.page.len( -1 ).draw();
+            //    } );
 
             },
             error: function (e) {
