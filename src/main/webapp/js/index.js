@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    var globalSubmittedFormData;
     //Setup final step navigation
     $("#example-vertical").steps({
         headerTag: "h3",
@@ -9,7 +10,24 @@ $(document).ready(function(){
             $('#example-vertical').remove();
             //Clear backgroundColor (White)
             $('body').css("background-color", "#FFFFFF");
-            alertify.alert('Process finished succefully!', 'Process finished succefully!', function(){ alertify.success('Process done!'); });
+            alertify.confirm('Process finished successfully!',
+                'If you wish to try filling the form again press "Retry", otherwise press "Cancel"',
+                function(){
+                    $.ajax({
+                            type: "DELETE",
+                            url: url + "/submittedForms/deleteSubmittedFormById/" + globalSubmittedFormData.id,
+                            success: function (data) {
+                                window.location = window.location.href;
+                                alertify.success('Redirecting to start...');
+                            },
+                            error: function (e) {
+                                alertify.error('Fail deleting submitted form, id' + globalSubmittedFormData.id);
+                            }
+                        }
+                    );
+                } ,
+                function(){}
+                ).set('labels', {ok:'Retry', cancel:'Cancel'});;
         },
     });
 
@@ -145,6 +163,8 @@ $(document).ready(function(){
             contentType: 'application/json; charset=UTF-8',
             data: jsonData,
             success: function (registeredFormData) {
+                //Set global submittedForm
+                globalSubmittedFormData = registeredFormData;
                 //get the closable setting value.
                 var closable = alertify.alert().setting('closable');
                 //grab the dialog instance using its parameter-less constructor then set multiple settings at once.
@@ -241,6 +261,7 @@ $(document).ready(function(){
                     iDisplayLength: 20,
                     paging:         false,
                     scrollY:        '50vh',
+                    title : '',
                     columns: [
                         { title: "#" , "width": "10%" },
                         { title: "Question" , "width": "25%"},
