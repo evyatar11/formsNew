@@ -11,7 +11,7 @@ $(document).ready(function(){
             //Clear backgroundColor (White)
             $('body').css("background-color", "#FFFFFF");
             alertify.confirm('Process finished successfully!',
-                'If you wish to try filling the form again press "Retry", otherwise press "Cancel"',
+                'If you wish to overwrite the submitted form and refill press "Retry", otherwise press "Done"',
                 function(){
                     $.ajax({
                             type: "DELETE",
@@ -27,7 +27,7 @@ $(document).ready(function(){
                     );
                 } ,
                 function(){}
-                ).set('labels', {ok:'Retry', cancel:'Cancel'});;
+                ).set('labels', {ok:'Retry', cancel:'Done'});;
         },
     });
 
@@ -171,7 +171,7 @@ $(document).ready(function(){
                 alertify.alert()
                     .setting({
                         'label':'Show Results Comparison',
-                        'title' : 'From submitted successfully!',
+                        'title' : 'Form submitted successfully!',
                         'message': 'Based on your assessment the score of ' + registeredFormData.customerName +' is: ' +registeredFormData.pdScore + '!' ,
                         'onok': function(){ getChartData(registeredFormData,finalTableColumnsData);}
                     }).show();
@@ -259,6 +259,7 @@ $(document).ready(function(){
                     searching: false,
                    // lengthMenu: [[5,10, 20, -1], [5,10, 20, "All"]],
                     iDisplayLength: 5,
+                    lengthChange: false,
                     paging:         true,
                     scrollY:        '50vh',
                     title : '',
