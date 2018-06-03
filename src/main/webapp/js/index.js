@@ -257,9 +257,9 @@ $(document).ready(function(){
                     data: finalTableColumnsData,
                     scrollCollapse: false,
                     searching: false,
-                   // lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-                    iDisplayLength: 20,
-                    paging:         false,
+                   // lengthMenu: [[5,10, 20, -1], [5,10, 20, "All"]],
+                    iDisplayLength: 5,
+                    paging:         true,
                     scrollY:        '50vh',
                     title : '',
                     columns: [
@@ -375,6 +375,7 @@ $(document).ready(function(){
                         data: rating3,
                         backgroundColor: 'rgb(221, 255, 51)', //Light Green with yellow tint
                         borderColor: 'rgb((221, 255, 51)', //Light Green with yellow tint
+                        pointStyle:'circle',
                         pointRadius: point
                     }
                     ,
