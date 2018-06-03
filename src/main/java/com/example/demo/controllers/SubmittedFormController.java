@@ -24,4 +24,9 @@ public class SubmittedFormController {
         return submittedFormService.getSubmittedForms();
     }
 
+    @RequestMapping(value = "/deleteSubmittedFormById/{id}", method = RequestMethod.DELETE)
+    public void deleteSubmittedFormById(@PathVariable("id") int id){
+        submittedFormService.deleteSubmittedFormById(id);
+    }
+
 }
