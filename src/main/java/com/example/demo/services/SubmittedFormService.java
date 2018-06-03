@@ -41,4 +41,8 @@ public class SubmittedFormService {
     public List<FormSubmission> getSubmittedFormsByBorrowerRating(double borrowerRating) {
 		return formSubmissionDao.getSubmittedFormsByPdScore(borrowerRating);
     }
+
+    public void deleteSubmittedFormById(int id) {
+        formSubmissionDao.deleteSubmittedFormById(id);
+    }
 }
