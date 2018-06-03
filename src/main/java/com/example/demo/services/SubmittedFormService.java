@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -24,6 +25,7 @@ public class SubmittedFormService {
         tempForm.setBorrowerRating(Double.valueOf(form.getBorrowerRating()));
         tempForm.setCustomerName(form.getCustomerName());
         tempForm.setPdScore(Double.valueOf(form.getPdScore()));
+     // tempForm.setModifiedTimestamp(calendar.getTime());
         String jsonString = gson.toJson(form.getSubmittedFormRawData());
         System.out.println("JsonString: " + jsonString);
         tempForm.setSubmittedFormRawData(jsonString);

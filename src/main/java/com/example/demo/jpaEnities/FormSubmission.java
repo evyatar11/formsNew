@@ -1,6 +1,7 @@
 package com.example.demo.jpaEnities;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "SubmittedForms")
@@ -17,6 +18,18 @@ public class FormSubmission {
     private double borrowerRating;
 
     private double pdScore;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private java.util.Date modifiedTimestamp;
+
+    public void setModifiedTimestamp(Date modifiedTimestamp) {
+        this.modifiedTimestamp = modifiedTimestamp;
+    }
+
+    public Date getModifiedTimestamp() {
+        return modifiedTimestamp;
+    }
+
 
     @Lob
     @Column
