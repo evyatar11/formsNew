@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -20,12 +21,13 @@ public class SubmittedFormService {
 
     public FormSubmission submitForm(SubmittedFormDTO form) {
         Gson gson = new Gson();
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         FormSubmission tempForm = new FormSubmission();
         tempForm.setAccountOfficeName(form.getAccountOfficeName());
         tempForm.setBorrowerRating(Double.valueOf(form.getBorrowerRating()));
         tempForm.setCustomerName(form.getCustomerName());
         tempForm.setPdScore(Double.valueOf(form.getPdScore()));
-     // tempForm.setModifiedTimestamp(calendar.getTime());
+        tempForm.setSqlTimestamp(timestamp);
         String jsonString = gson.toJson(form.getSubmittedFormRawData());
         System.out.println("JsonString: " + jsonString);
         tempForm.setSubmittedFormRawData(jsonString);

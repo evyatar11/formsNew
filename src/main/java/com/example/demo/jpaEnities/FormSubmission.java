@@ -1,6 +1,7 @@
 package com.example.demo.jpaEnities;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -19,23 +20,22 @@ public class FormSubmission {
 
     private double pdScore;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private java.util.Date modifiedTimestamp;
-
-    public void setModifiedTimestamp(Date modifiedTimestamp) {
-        this.modifiedTimestamp = modifiedTimestamp;
-    }
-
-    public Date getModifiedTimestamp() {
-        return modifiedTimestamp;
-    }
-
+    @Basic
+    private java.sql.Timestamp sqlTimestamp;
 
     @Lob
     @Column
     private String submittedFormRawData;
 
     public FormSubmission(){}//No argument constructor for JPA
+
+    public Timestamp getSqlTimestamp() {
+        return sqlTimestamp;
+    }
+
+    public void setSqlTimestamp(Timestamp sqlTimestamp) {
+        this.sqlTimestamp = sqlTimestamp;
+    }
 
     public int getId() {
         return id;
@@ -93,7 +93,8 @@ public class FormSubmission {
                 ", customerName='" + customerName + '\'' +
                 ", borrowerRating=" + borrowerRating +
                 ", pdScore=" + pdScore +
-                ", submittedFormRawData=" + submittedFormRawData +
+                ", sqlTimestamp=" + sqlTimestamp +
+                ", submittedFormRawData='" + submittedFormRawData + '\'' +
                 '}';
     }
 }
