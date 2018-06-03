@@ -29,4 +29,8 @@ public class FormSubmissionDAO {
     public List<FormSubmission> getSubmittedFormsByPdScore(double borrowerRating) {
         return formSubmissionRepository.findFormSubmissionByBorrowerRatingOrderByPdScoreDesc(borrowerRating);
     }
+
+    public void deleteSubmittedFormById(int id) {
+        formSubmissionRepository.deleteById(id);
+    }
 }
