@@ -124,7 +124,7 @@ fieldset{
   height: 45px;
   background-color: #f1f1f1;
   border: none;
-  width: 48%;
+  width: 45%;
   outline: none;
   font-size: 14px !important;
   font-family: 'Open Sans', sans-serif !important;
@@ -303,7 +303,8 @@ input.valid, textarea.valid{
 }
 
 .img{
-  width: 30px;
+  width: 40px;
+  margin: 5px -200px;
 }
 
 .test{
@@ -328,7 +329,7 @@ width: 100%;
 
 #gradeAffect{
   margin-top: 17px;
-  width: 16%;
+  width: 2%;
 }
 #example-vertical{
   display: none;
