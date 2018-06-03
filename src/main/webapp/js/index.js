@@ -9,7 +9,7 @@ $(document).ready(function(){
             $('#example-vertical').remove();
             //Clear backgroundColor (White)
             $('body').css("background-color", "#FFFFFF");
-            alertify.alert('Process finished succefully!', 'Process finished succefully!', function(){ alertify.success('Process done!'); });
+            alertify.alert('Process finished successfully!', 'Process finished successfully!', function(){ alertify.success('Process done!'); });
         },
     });
 
@@ -72,7 +72,7 @@ $(document).ready(function(){
             var currentQuestions = currentSection.find('.question');
             for(i=0;i<currentQuestions.length;i++){
                 if ($(currentQuestions[i]).find("option:selected").attr('id') == -1){
-                    alertify.error('Please select the suitable option in all questions');
+                    alertify.error('Please select answer in all questions');
                     return;
                 }
             }
@@ -151,7 +151,7 @@ $(document).ready(function(){
                 alertify.alert()
                     .setting({
                         'label':'Show Results Comparison',
-                        'title' : 'From submitted successfully!',
+                        'title' : 'Form submitted successfully!',
                         'message': 'Based on your assessment the score of ' + registeredFormData.customerName +' is: ' +registeredFormData.pdScore + '!' ,
                         'onok': function(){ getChartData(registeredFormData,finalTableColumnsData);}
                     }).show();
