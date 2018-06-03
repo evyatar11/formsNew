@@ -190,18 +190,18 @@ $(document).ready(function(){
                     $(".question h4")[i].innerText =  (i+1) + ") " + $(".question h4")[i].innerText + ": ";
                 }
 
-                $('.formsSelect').on('change', function (event) {
-                    var catPercentage = $(this).parents(".section").attr('id');
-                    var questionPercentage = event.target.id;
-                    var answerGrade = $("option:selected", this).attr('id');
-                    if (answerGrade != -1){
-                        var accGrade = ( catPercentage / 100 ) * ( questionPercentage / 100 ) * answerGrade;
-                        $(this.parentElement).find("span").text("Effective Score: " +accGrade.toPrecision(2));
-                    }
-                    else{
-                        $(this.parentElement).find("span").text("Effective Score: 0.00");
-                    }
-                });
+             //   $('.formsSelect').on('change', function (event) {
+             //       var catPercentage = $(this).parents(".section").attr('id');
+             //       var questionPercentage = event.target.id;
+             //       var answerGrade = $("option:selected", this).attr('id');
+             //       if (answerGrade != -1){
+             //           var accGrade = ( catPercentage / 100 ) * ( questionPercentage / 100 ) * answerGrade;
+             //           $(this.parentElement).find("span").text("Effective Score: " +accGrade.toPrecision(2));
+             //       }
+             //       else{
+             //           $(this.parentElement).find("span").text("Effective Score: 0.00");
+             //       }
+             //   });
 
                 //Bind click function to all buttons
                 bindButtons(sectionLength);
