@@ -337,8 +337,8 @@ $(document).ready(function(){
                         showLine : false,
                         label: '',
                         data: xyisPoints,
-                        backgroundColor: 'rgba(255, 0, 0, 0)', //Opacity 0--> transparent
-                        borderColor: 'rgba(255, 0, 0, 0)', //Opacity 0--> transparent
+                        backgroundColor: 'rgb(255, 0, 0, 0)', //Opacity 0--> transparent
+                        borderColor: 'rgb(255, 0, 0, 0)', //Opacity 0--> transparent
                     }
                     ,
                     {
