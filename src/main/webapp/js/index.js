@@ -258,10 +258,10 @@ $(document).ready(function(){
                     scrollCollapse: false,
                     searching: false,
                    // lengthMenu: [[5,10, 20, -1], [5,10, 20, "All"]],
-                    iDisplayLength: 5,
+                    iDisplayLength: finalTableColumnsData.length ,
                     lengthChange: false,
-                    paging:         true,
-                    scrollY:        '50vh',
+                    // paging:         true,
+                    // scrollY:        '50vh',
                     title : '',
                     columns: [
                         { title: "#" , "width": "10%" },
