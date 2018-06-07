@@ -170,9 +170,9 @@ $(document).ready(function(){
                 //grab the dialog instance using its parameter-less constructor then set multiple settings at once.
                 alertify.alert()
                     .setting({
-                        'label':'Show Results Comparison',
+                        'label':'Show Results',
                         'title' : 'Form submitted successfully!',
-                        'message': 'Based on your assessment the score of ' + registeredFormData.customerName +' is: ' +registeredFormData.pdScore + '!' ,
+                        'message': 'The questionnaire score for ' + registeredFormData.customerName +' is: ' +registeredFormData.pdScore + '!' ,
                         'onok': function(){ getChartData(registeredFormData,finalTableColumnsData);}
                     }).show();
             },
