@@ -337,16 +337,16 @@ $(document).ready(function(){
                         showLine : false,
                         label: '',
                         data: xyisPoints,
-                        backgroundColor: 'rgb(255, 0, 0, 0)', //Opacity 0--> transparent
-                        borderColor: 'rgb(255, 0, 0, 0)', //Opacity 0--> transparent
+                        backgroundColor: 'rgba(255, 0, 0, 0)', //Opacity 0--> transparent
+                        borderColor: 'rgba(255, 0, 0, 0)', //Opacity 0--> transparent
                     }
                     ,
                     {
                         showLine : false,
                         label: 'Current Assessment',
                         data: myRegisteredFormData,
-                        backgroundColor: 'rgba(0,0,0)', //Black
-                        borderColor: 'rgba(0,0,0)', //Black
+                        backgroundColor: 'rgb(0,0,0)', //Black
+                        borderColor: 'rgb(0,0,0)', //Black
                         pointRadius: point
                     }
                     ,
