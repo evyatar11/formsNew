@@ -12,12 +12,15 @@ public class Qa {
     @SerializedName("answerText")
     @Expose
     private String answerText;
+    @SerializedName("accountOfficeName")
+    @Expose
+    private String accountOfficeName;
+
 
     /**
      * No args constructor for use in serialization
      * 
-     */
-    public Qa() {
+     */ private Qa() {
     }
 
     /**
@@ -25,10 +28,20 @@ public class Qa {
      * @param answerText
      * @param questionText
      */
-    public Qa(String questionText, String answerText) {
+    public Qa(String accountOfficeName,String questionText, String answerText) {
         super();
         this.questionText = questionText;
         this.answerText = answerText;
+        this.accountOfficeName = accountOfficeName;
+
+    }
+
+    public String getaccountOfficeName() {
+        return accountOfficeName;
+    }
+
+    public void setaccountOfficeName(String accountOfficeName) {
+        this.accountOfficeName = accountOfficeName;
     }
 
     public String getQuestionText() {
