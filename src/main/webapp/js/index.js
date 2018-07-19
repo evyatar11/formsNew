@@ -119,7 +119,7 @@ $(document).ready(function(){
             }
         }
         var categories = $(".section");
-        var submittedFormData = { "qa" : []};
+        var submittedFormData = {"AccountOfficeName": "", "BorrowerRating" : "" , "CustomerName" : "" , "pdScore" : "", "qa" : []};
         var formScore = 0;
         var finalTableColumnsData = [];
         var counter =0;
@@ -147,6 +147,12 @@ $(document).ready(function(){
         var accountName = $('#name').val();
         var customerName = $('#Client').val();
         var borrowerRating = $('#rating').val();
+
+        //Add field to json raw data also
+        submittedFormData.accountOfficeName = accountName;
+        submittedFormData.borrowerRating = borrowerRating;
+        submittedFormData.customerName = customerName;
+        submittedFormData.pdScore = formScore;
 
         var jsonData = JSON.stringify({
             accountOfficeName: accountName,
