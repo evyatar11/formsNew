@@ -125,14 +125,14 @@ $(document).ready(function(){
         var counter =0;
         for (i=1;i<categories.length;i++) {
             var jQueryCategoryItem = $(categories[i]);
-            var catPercent = jQueryCategoryItem.attr('id');
+            var catPercent = jQueryCategoryItem.attr('id') + "." + categories[i].classList[0];
             var categoryQuestions = $(jQueryCategoryItem.find(".question select"));
             var categoryQuestionsTexts = $(jQueryCategoryItem.find(".question h4"));
             var categorySelectedAnswersScore = jQueryCategoryItem.find(".question option:selected");
             var catScoreSum = 0;
             for (j=0;j<categorySelectedAnswersScore.length;j++){
                 counter++;
-                var questionWeight = $(categoryQuestions[j]).attr('id');
+                var questionWeight = $(categoryQuestions[j]).attr('id')  + "." + categoryQuestions[j].classList[0];
                 var answerScore = $(categorySelectedAnswersScore[j]).attr('id');
                 var effectiveScore =   ( ( catPercent /100) * (questionWeight / 100) * answerScore );
                 catScoreSum+=  (questionWeight * answerScore) / 100 ;
