@@ -1,10 +1,8 @@
 package com.example.demo.daos;
 
 
-import com.example.demo.DTOs.SubmittedFormDTO;
 import com.example.demo.jpaEnities.FormSubmission;
 import com.example.demo.repository.FormSubmissionRepository;
-import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;

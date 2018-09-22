@@ -48,11 +48,11 @@ public class Question {
         this.categoryId = categoryId;
     }
 
-    public List<Answer> getQuestionList() {
+    public List<Answer> getAnswerList() {
         return answerList;
     }
 
-    public void setQuestionList(List<Answer> answerList) {
+    public void setAnswerList(List<Answer> answerList) {
         this.answerList = answerList;
     }
 

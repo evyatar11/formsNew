@@ -22,4 +22,8 @@ public class FormService {
 		return form.toHtmlString();
 	}
 
+	public Form getFormDataById(Integer formId){
+		return formDao.getFormById(formId);
+	}
+
 }
