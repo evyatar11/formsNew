@@ -53,7 +53,7 @@ public class LgdController {
 
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/getSubmittedBorrowers" , method = RequestMethod.POST)
-    public List<Borrower> getSubmittedBorrowers(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token){
+    public List<DealScoreSubmission> getSubmittedBorrowers(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token){
         if (authService.validateToken(new Auth(username,token)))
             return lgdService.getSubmittedBorrowers();
         else

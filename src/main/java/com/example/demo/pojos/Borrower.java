@@ -1,5 +1,10 @@
 package com.example.demo.pojos;
 
+import com.example.demo.jpaEnities.DealScoreSubmission;
+
+import javax.swing.tree.RowMapper;
+import javax.swing.tree.TreePath;
+
 public class Borrower {
 
     private int borrowerId;
@@ -36,4 +41,5 @@ public class Borrower {
                 ", borrowerName='" + borrowerName + '\'' +
                 '}';
     }
+
 }

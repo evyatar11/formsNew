@@ -39,7 +39,7 @@ public class LgdDAO {
         return dealScoreSubmittionRepository.save(submission);
     }
 
-    public List<Borrower> getSubmittedBorrowers() {
+    public List<DealScoreSubmission> getSubmittedBorrowers() {
 //        return dealScoreSubmittionRepository.getDistinctBorrowers();
         return null;
     }

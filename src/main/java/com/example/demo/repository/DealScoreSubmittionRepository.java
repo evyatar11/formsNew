@@ -11,6 +11,6 @@ public interface DealScoreSubmittionRepository extends JpaRepository<DealScoreSu
 
 
 //    @Query("SELECT distinct borrowerId,borrowerName FROM DealScoreSubmissions")
-//    public List<Borrower> getDistinctBorrowers();
+//    List<DealScoreSubmission> getDistinctBorrowers();
 
 }

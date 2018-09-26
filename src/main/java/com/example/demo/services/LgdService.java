@@ -28,7 +28,7 @@ public class LgdService {
         return lgdDao.submit(submission);
     }
 
-    public List<Borrower> getSubmittedBorrowers() {
+    public List<DealScoreSubmission> getSubmittedBorrowers() {
         return lgdDao.getSubmittedBorrowers();
     }
 }
