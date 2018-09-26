@@ -43,7 +43,9 @@ public class AuthService {
             //Generate token for 8 hours
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(System.currentTimeMillis());
-            calendar.add(Calendar.HOUR_OF_DAY, 8);
+//            calendar.add(Calendar.HOUR_OF_DAY, 8);
+            calendar.add(Calendar.MINUTE, 30);
+
 
             //Random guid for token
             UUID uuid = UUID.randomUUID();
