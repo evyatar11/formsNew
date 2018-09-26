@@ -12,6 +12,7 @@ public class LgdQuestion {
     @Column(name="questionId")
     private int id;
     private String questionContent;
+    private double modifier;
 
     @OneToMany(mappedBy = "questionId", cascade = CascadeType.ALL)
     private List<LgdAnswer> answerList;
@@ -40,6 +41,14 @@ public class LgdQuestion {
         this.answerList = answerList;
     }
 
+    public double getModifier() {
+        return modifier;
+    }
+
+    public void setModifier(double modifier) {
+        this.modifier = modifier;
+    }
+
     public LgdQuestion() {
     }
 
@@ -48,6 +57,7 @@ public class LgdQuestion {
         return "LgdQuestion{" +
                 "id=" + id +
                 ", questionContent='" + questionContent + '\'' +
+                ", modifier=" + modifier +
                 ", answerList=" + answerList +
                 '}';
     }

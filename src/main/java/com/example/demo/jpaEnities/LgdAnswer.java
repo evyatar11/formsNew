@@ -12,6 +12,8 @@ public class LgdAnswer {
     private int questionId;
     private String answerContent;
     private int answerScore;
+    @Column(name="Weight")
+    private double weight;
 
     public int getAnswerId() {
         return answerId;
@@ -45,6 +47,14 @@ public class LgdAnswer {
         this.answerScore = answerScore;
     }
 
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
     public LgdAnswer() {
     }
 
@@ -55,6 +65,7 @@ public class LgdAnswer {
                 ", questionId=" + questionId +
                 ", answerContent='" + answerContent + '\'' +
                 ", answerScore=" + answerScore +
+                ", weight=" + weight +
                 '}';
     }
 }
