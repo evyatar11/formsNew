@@ -95,7 +95,7 @@
 				</executions>
 				<configuration>
 					<executable>ng</executable>
-					<workingDirectory>src/main/ui</workingDirectory>
+					<workingDirectory>src/main/client</workingDirectory>
 					<arguments>
 						<argument>build</argument>
 						<!--<argument>&#45;&#45;prod</argument>-->

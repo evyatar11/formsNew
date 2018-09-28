@@ -1,3 +1,6 @@
 [submodule "client"]
 	path = client
 	url = https://github.com/evyatar11/angularForms
+[submodule "src/main/client"]
+	path = src/main/client
+	url = https://github.com/evyatar11/angularForms
