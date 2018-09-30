@@ -6,12 +6,13 @@ import com.example.demo.jpaEnities.DealScoreSubmission;
 import com.example.demo.jpaEnities.LgdQuestion;
 import com.example.demo.pojos.Auth;
 import com.example.demo.pojos.Borrower;
+import com.example.demo.pojos.IBorrower;
 import com.example.demo.services.AuthService;
 import com.example.demo.services.LgdService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -52,10 +53,31 @@ public class LgdController {
     }
 
     @CrossOrigin(origins = "*")
-    @RequestMapping(value = "/getSubmittedBorrowers" , method = RequestMethod.POST)
-    public List<DealScoreSubmission> getSubmittedBorrowers(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token){
+    @RequestMapping(value = "/getSubmittedBorrowers" , method = RequestMethod.GET)
+    public List<Borrower> getSubmittedBorrowers(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token){
         if (authService.validateToken(new Auth(username,token)))
             return lgdService.getSubmittedBorrowers();
+        else
+            throw new TokenInvalidException(username);
+    }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/getLastSubmittedFromByBorrower/{borrowerId}/{borrowerName}" , method = RequestMethod.GET)
+    public DealScoreSubmission getLastSubmittedFromByBorrower(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token,
+                                                              @PathVariable("borrowerId") int borrowerId,@PathVariable("borrowerName") String borrowerName){
+        if (authService.validateToken(new Auth(username,token)))
+            return lgdService.getLastSubmittedFromByBorrower(borrowerId,borrowerName);
+        else
+            throw new TokenInvalidException(username);
+    }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/getLastSubmittedFromByBorrowerAndLoan/{borrowerId}/{borrowerName}/{loanId}" , method = RequestMethod.GET)
+    public DealScoreSubmission getLastSubmittedFromByBorrowerAndLoan(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token,
+                                                              @PathVariable("borrowerId") int borrowerId,@PathVariable("borrowerName") String borrowerName,
+                                                              @PathVariable("loanId") int loanId){
+        if (authService.validateToken(new Auth(username,token)))
+        return lgdService.getLastSubmittedFromByBorrowerAndLoan(borrowerId,borrowerName,loanId);
         else
             throw new TokenInvalidException(username);
     }

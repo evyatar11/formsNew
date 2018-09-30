@@ -10,7 +10,9 @@ public class DealScoreSubmission {
     @Id
     private int id;
     private String ratedBy;
+    @Column(name="borrowerId")
     private int borrowerId;
+    @Column(name="borrowerName")
     private String borrowerName;
     private boolean crossCollaterlized;
     private int loanId;
