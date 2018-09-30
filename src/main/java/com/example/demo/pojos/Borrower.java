@@ -1,20 +1,25 @@
 package com.example.demo.pojos;
 
-import com.example.demo.jpaEnities.DealScoreSubmission;
-
-import javax.swing.tree.RowMapper;
-import javax.swing.tree.TreePath;
+import javax.persistence.Column;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Borrower {
+    Integer borrowerId;
+    String borrowerName;
+    List<Integer> loans;
 
-    private int borrowerId;
-    private String borrowerName;
+    public Borrower(Integer borrowerId, String borrowerName, List<Integer> loansList) {
+        this.borrowerId = borrowerId;
+        this.borrowerName = borrowerName;
+        this.loans = loansList;
+    }
 
     public int getBorrowerId() {
         return borrowerId;
     }
 
-    public void setBorrowerId(int borrowerId) {
+    public void setBorrowerId(Integer borrowerId) {
         this.borrowerId = borrowerId;
     }
 
@@ -26,12 +31,12 @@ public class Borrower {
         this.borrowerName = borrowerName;
     }
 
-    public Borrower(int borrowerId, String borrowerName) {
-        this.borrowerId = borrowerId;
-        this.borrowerName = borrowerName;
+    public List<Integer> getLoans() {
+        return loans;
     }
 
-    public Borrower() {
+    public void setLoans(List<Integer> loans) {
+        this.loans = loans;
     }
 
     @Override
@@ -39,7 +44,7 @@ public class Borrower {
         return "Borrower{" +
                 "borrowerId=" + borrowerId +
                 ", borrowerName='" + borrowerName + '\'' +
+                ", loans=" + loans +
                 '}';
     }
-
 }
