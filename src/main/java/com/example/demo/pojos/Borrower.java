@@ -4,15 +4,15 @@ import javax.persistence.Column;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Borrower {
+public class Borrower implements Comparable<Borrower>{
     Integer borrowerId;
     String borrowerName;
     List<Integer> loans;
 
-    public Borrower(Integer borrowerId, String borrowerName, List<Integer> loansList) {
+    public Borrower(Integer borrowerId, String borrowerName) {
         this.borrowerId = borrowerId;
         this.borrowerName = borrowerName;
-        this.loans = loansList;
+        this.loans = new ArrayList<Integer>();
     }
 
     public int getBorrowerId() {
@@ -46,5 +46,10 @@ public class Borrower {
                 ", borrowerName='" + borrowerName + '\'' +
                 ", loans=" + loans +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Borrower borrower) {
+        return this.borrowerId-borrower.borrowerId;
     }
 }

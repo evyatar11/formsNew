@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Repository
@@ -43,20 +44,24 @@ public class LgdDAO {
     }
 
     public List<Borrower> getSubmittedBorrowers() {
-        List<Borrower> borrowersWithLoans = new ArrayList<>();
-        List<IBorrower> borrowersList = dealScoreSubmittionRepository.getDistinctBorrowers();
-        for (IBorrower borrower: borrowersList) {
-            List<Integer> borrowerLoans = dealScoreSubmittionRepository.getBorrowersLoans(borrower.getBorrowerId());
-            borrowersWithLoans.add(new Borrower(borrower.getBorrowerId(),borrower.getBorrowerName(),borrowerLoans));
+        List<Borrower> borrowers = new ArrayList<>();
+        List<IBorrower> borrowersRaw = dealScoreSubmittionRepository.getDistinctBorrowers();
+        for (IBorrower borrower: borrowersRaw) {
+            borrowers.add(new Borrower(borrower.getBorrowerId(),borrower.getBorrowerName()));
         }
-        return borrowersWithLoans;
+        Collections.sort(borrowers);
+        return borrowers;
     }
 
     public DealScoreSubmission getLastSubmittedFromByBorrower(int borrowerId, String borrowerName) {
-        return dealScoreSubmittionRepository.findTop1ByBorrowerIdAndBorrowerNameOrderByDateDesc(borrowerId,borrowerName);
+        return dealScoreSubmittionRepository.findTop1ByBorrowerIdAndBorrowerNameAndFormStatusNotLikeOrderByDateDesc(borrowerId,borrowerName,"draft");
     }
 
     public DealScoreSubmission getLastSubmittedFromByBorrowerAndLoan(int borrowerId, String borrowerName, int loanId) {
-        return dealScoreSubmittionRepository.findTop1ByBorrowerIdAndBorrowerNameAndLoanIdOrderByDateDesc(borrowerId,borrowerName,loanId);
+        return dealScoreSubmittionRepository.findTop1ByBorrowerIdAndBorrowerNameAndLoanIdAndFormStatusNotLikeOrderByDateDesc(borrowerId,borrowerName,loanId,"draft");
+    }
+
+    public List<Integer> getBorrowersLoans(int borrowerId, String borrowerName) {
+        return dealScoreSubmittionRepository.getBorrowersLoansList(borrowerId,borrowerName);
     }
 }

@@ -41,4 +41,8 @@ public class LgdService {
     public DealScoreSubmission getLastSubmittedFromByBorrowerAndLoan(int borrowerId, String borrowerName, int loanId) {
         return lgdDao.getLastSubmittedFromByBorrowerAndLoan(borrowerId,borrowerName,loanId);
     }
+
+    public List<Integer> getBorrowersLoans(int borrowerId, String borrowerName) {
+        return lgdDao.getBorrowersLoans(borrowerId,borrowerName);
+    }
 }
