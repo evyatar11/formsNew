@@ -1,7 +1,6 @@
 package com.example.demo.repository;
 
 import com.example.demo.jpaEnities.DealScoreSubmission;
-import com.example.demo.pojos.Borrower;
 import com.example.demo.pojos.IBorrower;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,10 +17,10 @@ public interface DealScoreSubmittionRepository extends JpaRepository<DealScoreSu
     @Query(value = "SELECT distinct borrowerId,borrowerName FROM DealScoreSubmissions",nativeQuery = true)
     List<IBorrower> getDistinctBorrowers();
 
-    @Query (value = "select loanId FROM DealScoreSubmissions where crossCollaterlized = 0 and borrowerId = :id",nativeQuery = true)
+    @Query (value = "select distinct loanId FROM DealScoreSubmissions where crossCollaterlized = 0 and borrowerId = :id",nativeQuery = true)
     List<Integer> getBorrowersLoans(@Param("id") int borrowerId);
 
     DealScoreSubmission findTop1ByBorrowerIdAndBorrowerNameOrderByDateDesc(Integer borrowerId,String borrowerName);
 
-    DealScoreSubmission findByBorrowerIdAndBorrowerNameAndLoanId(Integer borrowerId,String borrowerName,Integer loanId);
+    DealScoreSubmission findTop1ByBorrowerIdAndBorrowerNameAndLoanIdOrderByDateDesc(Integer borrowerId,String borrowerName,Integer loanId);
 }
