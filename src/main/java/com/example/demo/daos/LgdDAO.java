@@ -57,6 +57,6 @@ public class LgdDAO {
     }
 
     public DealScoreSubmission getLastSubmittedFromByBorrowerAndLoan(int borrowerId, String borrowerName, int loanId) {
-        return dealScoreSubmittionRepository.findByBorrowerIdAndBorrowerNameAndLoanId(borrowerId,borrowerName,loanId);
+        return dealScoreSubmittionRepository.findTop1ByBorrowerIdAndBorrowerNameAndLoanIdOrderByDateDesc(borrowerId,borrowerName,loanId);
     }
 }
