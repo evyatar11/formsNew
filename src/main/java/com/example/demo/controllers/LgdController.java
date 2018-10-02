@@ -62,6 +62,18 @@ public class LgdController {
     }
 
     @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/getBorrowerLoans/{borrowerId}/{borrowerName}" , method = RequestMethod.GET)
+    public List<Integer> getBorrowerLoans(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token,
+                                           @PathVariable("borrowerId") int borrowerId,@PathVariable("borrowerName") String borrowerName){
+        if (authService.validateToken(new Auth(username,token)))
+            return lgdService.getBorrowersLoans(borrowerId,borrowerName);
+        else
+            throw new TokenInvalidException(username);
+    }
+
+
+
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/getLastSubmittedFromByBorrower/{borrowerId}/{borrowerName}" , method = RequestMethod.GET)
     public DealScoreSubmission getLastSubmittedFromByBorrower(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token,
                                                               @PathVariable("borrowerId") int borrowerId,@PathVariable("borrowerName") String borrowerName){
