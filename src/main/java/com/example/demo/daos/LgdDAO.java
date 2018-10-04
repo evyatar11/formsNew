@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -53,15 +53,23 @@ public class LgdDAO {
         return borrowers;
     }
 
-    public DealScoreSubmission getLastSubmittedFromByBorrower(int borrowerId, String borrowerName) {
+    public DealScoreSubmission getLastSubmittedFromByBorrower(long borrowerId, String borrowerName) {
         return dealScoreSubmittionRepository.findTop1ByBorrowerIdAndBorrowerNameAndFormStatusNotLikeOrderByDateDesc(borrowerId,borrowerName,"draft");
     }
 
-    public DealScoreSubmission getLastSubmittedFromByBorrowerAndLoan(int borrowerId, String borrowerName, int loanId) {
+    public DealScoreSubmission getLastSubmittedFromByBorrowerAndLoan(long borrowerId, String borrowerName, long loanId) {
         return dealScoreSubmittionRepository.findTop1ByBorrowerIdAndBorrowerNameAndLoanIdAndFormStatusNotLikeOrderByDateDesc(borrowerId,borrowerName,loanId,"draft");
     }
 
-    public List<Integer> getBorrowersLoans(int borrowerId, String borrowerName) {
+    public List<BigInteger> getBorrowersLoans(long borrowerId, String borrowerName) {
         return dealScoreSubmittionRepository.getBorrowersLoansList(borrowerId,borrowerName);
+    }
+
+    public String getBorrowerNameById(long borrowerId) {
+        return dealScoreSubmittionRepository.getBorrowerNameById(borrowerId);
+    }
+
+    public String getLoanNameById(long loanId) {
+        return dealScoreSubmittionRepository.getLoanNameById(loanId);
     }
 }

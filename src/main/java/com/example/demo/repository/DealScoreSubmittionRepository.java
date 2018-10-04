@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.math.BigInteger;
 import java.util.List;
 
 @Transactional
@@ -18,18 +19,22 @@ public interface DealScoreSubmittionRepository extends JpaRepository<DealScoreSu
     List<IBorrower> getDistinctBorrowers();
 
     @Query (value = "select distinct loanId FROM DealScoreSubmissions where crossCollaterlized = 0 and borrowerId = :id",nativeQuery = true)
-    List<Integer> getBorrowersLoans(@Param("id") int borrowerId);
+    List<Long> getBorrowersLoans(@Param("id") long borrowerId);
 
-    DealScoreSubmission findTop1ByBorrowerIdAndBorrowerNameOrderByDateDesc(Integer borrowerId,String borrowerName);
+    DealScoreSubmission findTop1ByBorrowerIdAndBorrowerNameOrderByDateDesc(Long borrowerId,String borrowerName);
 
-    DealScoreSubmission findTop1ByBorrowerIdAndBorrowerNameAndLoanIdOrderByDateDesc(Integer borrowerId,String borrowerName,Integer loanId);
+    DealScoreSubmission findTop1ByBorrowerIdAndBorrowerNameAndLoanIdOrderByDateDesc(Long borrowerId,String borrowerName,Long loanId);
 
     @Query (value = "select distinct loanId FROM DealScoreSubmissions where crossCollaterlized = 0 and borrowerId = :id and borrowerName = :name",nativeQuery = true)
-    List<Integer> getBorrowersLoansList(@Param("id") int borrowerId ,@Param("name") String borrowerName);
+    List<BigInteger> getBorrowersLoansList(@Param("id") long borrowerId , @Param("name") String borrowerName);
 
-    DealScoreSubmission findTop1ByBorrowerIdAndBorrowerNameAndFormStatusNotLikeOrderByDateDesc(Integer borrowerId,String borrowerName,String draftString);
+    DealScoreSubmission findTop1ByBorrowerIdAndBorrowerNameAndFormStatusNotLikeOrderByDateDesc(Long borrowerId,String borrowerName,String draftString);
 
-    DealScoreSubmission findTop1ByBorrowerIdAndBorrowerNameAndLoanIdAndFormStatusNotLikeOrderByDateDesc(Integer borrowerId,String borrowerName,Integer loanId,String draftString);
+    DealScoreSubmission findTop1ByBorrowerIdAndBorrowerNameAndLoanIdAndFormStatusNotLikeOrderByDateDesc(Long borrowerId,String borrowerName,Long loanId,String draftString);
 
+    @Query (value = "select distinct borrowerName FROM DealScoreSubmissions where borrowerId = :id ",nativeQuery = true)
+    String getBorrowerNameById(@Param("id") long borrowerId);
 
+    @Query (value = "select distinct loanName FROM DealScoreSubmissions where loanId = :id ",nativeQuery = true)
+    String getLoanNameById(@Param("id") long loanId);
 }

@@ -5,21 +5,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Borrower implements Comparable<Borrower>{
-    Integer borrowerId;
+    Long borrowerId;
     String borrowerName;
-    List<Integer> loans;
+    List<Long> loans;
 
-    public Borrower(Integer borrowerId, String borrowerName) {
+    public Borrower(Long borrowerId, String borrowerName) {
         this.borrowerId = borrowerId;
         this.borrowerName = borrowerName;
-        this.loans = new ArrayList<Integer>();
+        this.loans = new ArrayList<Long>();
     }
 
-    public int getBorrowerId() {
+    public Long getBorrowerId() {
         return borrowerId;
     }
 
-    public void setBorrowerId(Integer borrowerId) {
+    public void setBorrowerId(long borrowerId) {
         this.borrowerId = borrowerId;
     }
 
@@ -31,11 +31,11 @@ public class Borrower implements Comparable<Borrower>{
         this.borrowerName = borrowerName;
     }
 
-    public List<Integer> getLoans() {
+    public List<Long> getLoans() {
         return loans;
     }
 
-    public void setLoans(List<Integer> loans) {
+    public void setLoans(List<Long> loans) {
         this.loans = loans;
     }
 
@@ -48,8 +48,9 @@ public class Borrower implements Comparable<Borrower>{
                 '}';
     }
 
+
     @Override
     public int compareTo(Borrower borrower) {
-        return this.borrowerId-borrower.borrowerId;
+        return this.borrowerId.compareTo(borrower.borrowerId);
     }
 }

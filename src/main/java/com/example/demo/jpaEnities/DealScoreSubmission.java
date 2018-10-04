@@ -11,14 +11,14 @@ public class DealScoreSubmission {
     private int id;
     private String ratedBy;
     @Column(name="borrowerId")
-    private int borrowerId;
+    private long borrowerId;
     @Column(name="borrowerName")
     private String borrowerName;
     private boolean crossCollaterlized;
-    private int loanId;
+    private long loanId;
     private String loanName;
     private String lendingOfficer;
-    private int committeeId;
+    private long committeeId;
     private String businessUnit;
     private String currency;
     @Basic
@@ -26,13 +26,13 @@ public class DealScoreSubmission {
     @Lob
     @Column
     private String qa;
-    private int ead;
-    private int cashAndSecurities;
-    private int baseLgd;
-    private int modifiedLgd;
-    private int adjustedLgd;
-    private int finalLgd;
-    private int overrideLgd;
+    private double ead;
+    private double cashAndSecurities;
+    private double baseLgd;
+    private double modifiedLgd;
+    private double adjustedLgd;
+    private double finalLgd;
+    private double overrideLgd;
     private String overrideReason;
     private String formStatus;
 
@@ -55,11 +55,11 @@ public class DealScoreSubmission {
         this.ratedBy = ratedBy;
     }
 
-    public int getBorrowerId() {
+    public long getBorrowerId() {
         return borrowerId;
     }
 
-    public void setBorrowerId(int borrowerId) {
+    public void setBorrowerId(long borrowerId) {
         this.borrowerId = borrowerId;
     }
 
@@ -79,11 +79,11 @@ public class DealScoreSubmission {
         this.crossCollaterlized = crossCollaterlized;
     }
 
-    public int getLoanId() {
+    public long getLoanId() {
         return loanId;
     }
 
-    public void setLoanId(int loanId) {
+    public void setLoanId(long loanId) {
         this.loanId = loanId;
     }
 
@@ -103,11 +103,11 @@ public class DealScoreSubmission {
         this.lendingOfficer = lendingOfficer;
     }
 
-    public int getCommitteeId() {
+    public long getCommitteeId() {
         return committeeId;
     }
 
-    public void setCommitteeId(int committeeId) {
+    public void setCommitteeId(long committeeId) {
         this.committeeId = committeeId;
     }
 
@@ -143,59 +143,59 @@ public class DealScoreSubmission {
         this.qa = qa;
     }
 
-    public int getEad() {
+    public double getEad() {
         return ead;
     }
 
-    public void setEad(int ead) {
+    public void setEad(double ead) {
         this.ead = ead;
     }
 
-    public int getCashAndSecurities() {
+    public double getCashAndSecurities() {
         return cashAndSecurities;
     }
 
-    public void setCashAndSecurities(int cashAndSecurities) {
+    public void setCashAndSecurities(double cashAndSecurities) {
         this.cashAndSecurities = cashAndSecurities;
     }
 
-    public int getBaseLgd() {
+    public double getBaseLgd() {
         return baseLgd;
     }
 
-    public void setBaseLgd(int baseLgd) {
+    public void setBaseLgd(double baseLgd) {
         this.baseLgd = baseLgd;
     }
 
-    public int getModifiedLgd() {
+    public double getModifiedLgd() {
         return modifiedLgd;
     }
 
-    public void setModifiedLgd(int modifiedLgd) {
+    public void setModifiedLgd(double modifiedLgd) {
         this.modifiedLgd = modifiedLgd;
     }
 
-    public int getAdjustedLgd() {
+    public double getAdjustedLgd() {
         return adjustedLgd;
     }
 
-    public void setAdjustedLgd(int adjustedLgd) {
+    public void setAdjustedLgd(double adjustedLgd) {
         this.adjustedLgd = adjustedLgd;
     }
 
-    public int getFinalLgd() {
+    public double getFinalLgd() {
         return finalLgd;
     }
 
-    public void setFinalLgd(int finalLgd) {
+    public void setFinalLgd(double finalLgd) {
         this.finalLgd = finalLgd;
     }
 
-    public int getOverrideLgd() {
+    public double getOverrideLgd() {
         return overrideLgd;
     }
 
-    public void setOverrideLgd(int overrideLgd) {
+    public void setOverrideLgd(double overrideLgd) {
         this.overrideLgd = overrideLgd;
     }
 

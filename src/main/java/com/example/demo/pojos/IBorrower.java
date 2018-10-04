@@ -3,6 +3,6 @@ package com.example.demo.pojos;
 import java.util.List;
 
 public interface IBorrower {
-    public int getBorrowerId();
+    public long getBorrowerId();
     public String getBorrowerName();
 }
