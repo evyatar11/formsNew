@@ -54,7 +54,7 @@ public class LgdDAO {
     }
 
     public DealScoreSubmission getLastSubmittedFromByBorrower(long borrowerId, String borrowerName) {
-        return dealScoreSubmittionRepository.findTop1ByBorrowerIdAndBorrowerNameAndFormStatusNotLikeOrderByDateDesc(borrowerId,borrowerName,"draft");
+        return dealScoreSubmittionRepository.findTop1ByBorrowerIdAndBorrowerNameAndFormStatusNotLikeAndCrossCollaterlizedOrderByDateDesc(borrowerId,borrowerName,"draft",true);
     }
 
     public DealScoreSubmission getLastSubmittedFromByBorrowerAndLoan(long borrowerId, String borrowerName, long loanId) {

@@ -28,7 +28,7 @@ public interface DealScoreSubmittionRepository extends JpaRepository<DealScoreSu
     @Query (value = "select distinct loanId FROM DealScoreSubmissions where crossCollaterlized = 0 and borrowerId = :id and borrowerName = :name",nativeQuery = true)
     List<BigInteger> getBorrowersLoansList(@Param("id") long borrowerId , @Param("name") String borrowerName);
 
-    DealScoreSubmission findTop1ByBorrowerIdAndBorrowerNameAndFormStatusNotLikeOrderByDateDesc(Long borrowerId,String borrowerName,String draftString);
+    DealScoreSubmission findTop1ByBorrowerIdAndBorrowerNameAndFormStatusNotLikeAndCrossCollaterlizedOrderByDateDesc(Long borrowerId,String borrowerName,String draftString,Boolean crossCollaterlized);
 
     DealScoreSubmission findTop1ByBorrowerIdAndBorrowerNameAndLoanIdAndFormStatusNotLikeOrderByDateDesc(Long borrowerId,String borrowerName,Long loanId,String draftString);
 
