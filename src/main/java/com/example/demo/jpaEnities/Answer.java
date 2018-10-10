@@ -1,15 +1,13 @@
 package com.example.demo.jpaEnities;
 
-import j2html.attributes.Attr;
 import j2html.tags.ContainerTag;
-import j2html.tags.DomContent;
 
 import javax.persistence.*;
 
 import static j2html.TagCreator.*;
 
 @Entity
-@Table(name = "Answers")
+@Table(name = "USPBAnswers")
 public class Answer {
     @Id
     @GeneratedValue
