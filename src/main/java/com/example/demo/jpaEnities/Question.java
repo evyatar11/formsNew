@@ -9,7 +9,7 @@ import static j2html.TagCreator.*;
 import static j2html.TagCreator.text;
 
 @Entity
-@Table(name = "Questions")
+@Table(name = "USPBQuestions")
 public class Question {
 
     @Id

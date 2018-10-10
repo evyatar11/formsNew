@@ -1,14 +1,12 @@
 package com.example.demo.jpaEnities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.List;
 
 import static j2html.TagCreator.*;
 
 @Entity
-@Table(name = "Categories")
+@Table(name = "USPBCategories")
 public class Category {
 
     @Id
