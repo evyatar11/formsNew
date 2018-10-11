@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 import com.example.demo.DTOs.SubmittedFormDTO;
 import com.example.demo.exception.TokenInvalidException;
 import com.example.demo.jpaEnities.FormSubmission;
+import com.example.demo.jpaEnities.USPBpdConv;
 import com.example.demo.pojos.Auth;
 import com.example.demo.services.AuthService;
 import com.example.demo.services.SubmittedFormService;
@@ -43,6 +44,16 @@ public class SubmittedFormController {
     public void deleteSubmittedFormById(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token,@PathVariable("id") int id){
         if (authService.validateToken(new Auth(username,token)))
             submittedFormService.deleteSubmittedFormById(id);
+        else
+            throw new TokenInvalidException(username);
+    }
+
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/getUpdatedPdAndRating/{score}", method = RequestMethod.GET)
+    public USPBpdConv getUpdatedPdAndRating(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token,
+                                            @PathVariable("score") double score){
+        if (authService.validateToken(new Auth(username,token)))
+            return submittedFormService.getUpdatedPdAndRating(score);
         else
             throw new TokenInvalidException(username);
     }

@@ -19,6 +19,12 @@ public class SubmittedFormDTO {
     @SerializedName("pdScore")
     @Expose
     private String pdScore;
+    @SerializedName("score")
+    @Expose
+    private String score;
+    @SerializedName("updatedRating")
+    @Expose
+    private String updatedRating;
     @SerializedName("submittedFormRawData")
     @Expose
     private SubmittedFormRawData submittedFormRawData;
@@ -87,4 +93,19 @@ public class SubmittedFormDTO {
         this.submittedFormRawData = submittedFormRawData;
     }
 
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
+
+    public String getUpdatedRating() {
+        return updatedRating;
+    }
+
+    public void setUpdatedRating(String updatedRating) {
+        this.updatedRating = updatedRating;
+    }
 }

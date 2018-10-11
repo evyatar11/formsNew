@@ -3,6 +3,7 @@ package com.example.demo.services;
 import com.example.demo.DTOs.SubmittedFormDTO;
 import com.example.demo.daos.FormSubmissionDAO;
 import com.example.demo.jpaEnities.FormSubmission;
+import com.example.demo.jpaEnities.USPBpdConv;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -26,7 +27,9 @@ public class SubmittedFormService {
         tempForm.setAccountOfficeName(form.getAccountOfficeName());
         tempForm.setBorrowerRating(Double.valueOf(form.getBorrowerRating()));
         tempForm.setCustomerName(form.getCustomerName());
+        tempForm.setScore(Double.valueOf(form.getScore()));
         tempForm.setPdScore(Double.valueOf(form.getPdScore()));
+        tempForm.setUpdatedRating(Double.valueOf(form.getUpdatedRating()));
         tempForm.setSqlTimestamp(timestamp);
         String jsonString = gson.toJson(form.getSubmittedFormRawData());
         System.out.println("JsonString: " + jsonString);
@@ -44,5 +47,9 @@ public class SubmittedFormService {
 
     public void deleteSubmittedFormById(int id) {
         formSubmissionDao.deleteSubmittedFormById(id);
+    }
+
+    public USPBpdConv getUpdatedPdAndRating(double score) {
+        return formSubmissionDao.getUpdatedPdAndRating(score);
     }
 }

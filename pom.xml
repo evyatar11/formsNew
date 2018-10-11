@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example</groupId>
-	<artifactId>uspb</artifactId>
+	<artifactId>PDLGD</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
 
@@ -20,7 +20,8 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>		<dependency>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
@@ -44,12 +45,12 @@
 			<artifactId>mssql-jdbc</artifactId>
 			<version>6.1.0.jre8</version>
 		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.40</version>
-			<scope>compile</scope>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>mysql</groupId>-->
+			<!--<artifactId>mysql-connector-java</artifactId>-->
+			<!--<version>5.1.40</version>-->
+			<!--<scope>compile</scope>-->
+		<!--</dependency>-->
 		<dependency>
 			<groupId>com.j2html</groupId>
 			<artifactId>j2html</artifactId>
@@ -73,7 +74,7 @@
 	</properties>
 
 	<build>
-		<finalName>uspb</finalName>
+		<finalName>PDLGD</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -94,7 +95,7 @@
 						<argument>build</argument>
 						<!--<argument>&#45;&#45;prod</argument>-->
 						<argument>--base-href</argument>
-						<argument>/uspb/</argument>
+						<argument>/PDLGD/</argument>
 					</arguments>
 				</configuration>
 			</plugin>

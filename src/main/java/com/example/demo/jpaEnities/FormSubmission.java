@@ -18,7 +18,11 @@ public class FormSubmission {
 
     private double borrowerRating;
 
+    private double score;
+
     private double pdScore;
+
+    private double updatedRating;
 
     @Basic
     private java.sql.Timestamp sqlTimestamp;
@@ -69,12 +73,12 @@ public class FormSubmission {
         this.borrowerRating = borrowerRating;
     }
 
-    public double getPdScore() {
-        return pdScore;
+    public double getScore() {
+        return score;
     }
 
-    public void setPdScore(double pdScore) {
-        this.pdScore = pdScore;
+    public void setScore(double score) {
+        this.score = score;
     }
 
     public String getSubmittedFormRawData() {
@@ -85,6 +89,22 @@ public class FormSubmission {
         this.submittedFormRawData = submittedFormRawData;
     }
 
+    public double getPdScore() {
+        return pdScore;
+    }
+
+    public void setPdScore(double pdScore) {
+        this.pdScore = pdScore;
+    }
+
+    public double getUpdatedRating() {
+        return updatedRating;
+    }
+
+    public void setUpdatedRating(double updatedRating) {
+        this.updatedRating = updatedRating;
+    }
+
     @Override
     public String toString() {
         return "FormSubmission{" +
@@ -92,7 +112,7 @@ public class FormSubmission {
                 ", accountOfficeName='" + accountOfficeName + '\'' +
                 ", customerName='" + customerName + '\'' +
                 ", borrowerRating=" + borrowerRating +
-                ", pdScore=" + pdScore +
+                ", pdScore=" + score +
                 ", sqlTimestamp=" + sqlTimestamp +
                 ", submittedFormRawData='" + submittedFormRawData + '\'' +
                 '}';
