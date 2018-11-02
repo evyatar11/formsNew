@@ -92,6 +92,7 @@
 					<executable>ng</executable>
 					<workingDirectory>src/main/client</workingDirectory>
 					<arguments>
+						<argument>npm install</argument>
 						<argument>build</argument>
 						<!--<argument>&#45;&#45;prod</argument>-->
 						<argument>--base-href</argument>
