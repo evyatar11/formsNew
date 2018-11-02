@@ -87,12 +87,24 @@
 							<goal>exec</goal>
 						</goals>
 					</execution>
+					<execution>
+						<id>npm install (initialize)</id>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<phase>initialize</phase>
+						<configuration>
+							<executable>npm</executable>
+							<arguments>
+								<argument>install</argument>
+							</arguments>
+						</configuration>
+					</execution>
 				</executions>
 				<configuration>
 					<executable>ng</executable>
 					<workingDirectory>src/main/client</workingDirectory>
 					<arguments>
-						<argument>npm install</argument>
 						<argument>build</argument>
 						<!--<argument>&#45;&#45;prod</argument>-->
 						<argument>--base-href</argument>
