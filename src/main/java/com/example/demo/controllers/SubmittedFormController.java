@@ -21,7 +21,6 @@ public class SubmittedFormController {
     @Autowired
     private AuthService authService;
 
-    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/submitForm", method = RequestMethod.POST)
     public FormSubmission submitForm(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token,@RequestBody SubmittedFormDTO form){
         if (authService.validateToken(new Auth(username,token)))
@@ -30,7 +29,6 @@ public class SubmittedFormController {
             throw new TokenInvalidException(username);
     }
 
-    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/getSubmittedForms", method = RequestMethod.GET)
     public List<FormSubmission> getSubmittedForms(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token){
         if (authService.validateToken(new Auth(username,token)))
@@ -39,7 +37,6 @@ public class SubmittedFormController {
             throw new TokenInvalidException(username);
     }
 
-    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/deleteSubmittedFormById/{id}", method = RequestMethod.DELETE)
     public void deleteSubmittedFormById(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token,@PathVariable("id") int id){
         if (authService.validateToken(new Auth(username,token)))
@@ -48,7 +45,6 @@ public class SubmittedFormController {
             throw new TokenInvalidException(username);
     }
 
-    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/getUpdatedPdAndRating/{score}", method = RequestMethod.GET)
     public USPBpdConv getUpdatedPdAndRating(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token,
                                             @PathVariable("score") double score){

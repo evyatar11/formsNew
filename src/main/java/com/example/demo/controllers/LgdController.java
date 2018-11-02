@@ -24,7 +24,6 @@ public class LgdController {
     @Autowired
     AuthService authService;
 
-    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/getBussinessUnits" , method = RequestMethod.GET)
     public List<BussinessUnit> getBussinessUnits(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token){
         if (authService.validateToken(new Auth(username,token)))
@@ -33,7 +32,6 @@ public class LgdController {
             throw new TokenInvalidException(username);
     }
 
-    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/getLgdQuestions" , method = RequestMethod.GET)
     public List<LgdQuestion> getLgdQuestions(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token){
         if (authService.validateToken(new Auth(username,token)))
@@ -42,7 +40,6 @@ public class LgdController {
             throw new TokenInvalidException(username);
     }
 
-    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/submit" , method = RequestMethod.POST)
     public DealScoreSubmission submit(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token,@RequestBody DealScoreSubmission submission){
         if (authService.validateToken(new Auth(username,token)))
@@ -51,7 +48,6 @@ public class LgdController {
             throw new TokenInvalidException(username);
     }
 
-    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/getSubmittedBorrowers" , method = RequestMethod.GET)
     public List<Borrower> getSubmittedBorrowers(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token){
         if (authService.validateToken(new Auth(username,token)))
@@ -60,7 +56,6 @@ public class LgdController {
             throw new TokenInvalidException(username);
     }
 
-    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/getBorrowerLoans/{borrowerId}/{borrowerName}" , method = RequestMethod.GET)
     public List<BigInteger> getBorrowerLoans(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token,
                                              @PathVariable("borrowerId") long borrowerId, @PathVariable("borrowerName") String borrowerName){
@@ -72,7 +67,6 @@ public class LgdController {
 
 
 
-    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/getLastSubmittedFromByBorrower/{borrowerId}/{borrowerName}" , method = RequestMethod.GET)
     public DealScoreSubmission getLastSubmittedFromByBorrower(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token,
                                                               @PathVariable("borrowerId") long borrowerId,@PathVariable("borrowerName") String borrowerName){
@@ -82,7 +76,6 @@ public class LgdController {
             throw new TokenInvalidException(username);
     }
 
-    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/getLastSubmittedFromByBorrowerAndLoan/{borrowerId}/{borrowerName}/{loanId}" , method = RequestMethod.GET)
     public DealScoreSubmission getLastSubmittedFromByBorrowerAndLoan(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token,
                                                               @PathVariable("borrowerId") long borrowerId,@PathVariable("borrowerName") String borrowerName,
@@ -93,7 +86,6 @@ public class LgdController {
             throw new TokenInvalidException(username);
     }
 
-    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/getBorrowerNameById/{borrowerId}" , method = RequestMethod.GET)
     public String getBorrowerNameById(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token,
                                               @PathVariable("borrowerId") long borrowerId){
@@ -103,7 +95,6 @@ public class LgdController {
             throw new TokenInvalidException(username);
     }
 
-    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/getLoanNameById/{loanId}" , method = RequestMethod.GET)
     public String getLoanNameById(@RequestHeader(value="username") String username, @RequestHeader(value="token") String token,
                                           @PathVariable("loanId") long loanId){

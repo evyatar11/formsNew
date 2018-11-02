@@ -24,7 +24,6 @@ public class FormController {
 		return formService.getFormDataHtml(formId);
 	}
 
-	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/getForms" , method = RequestMethod.GET)
 	public List<Form> getForms(@RequestHeader(value="username") String username,@RequestHeader(value="token") String token){
 		if (authService.validateToken(new Auth(username,token)))
@@ -33,7 +32,6 @@ public class FormController {
 			throw new TokenInvalidException(username);
 	}
 
-	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/getFormData/{formId}" , method = RequestMethod.GET)
 	public Form getFormDataById(@PathVariable("formId") int formId){
 		return formService.getFormDataById(formId);

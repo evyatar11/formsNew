@@ -19,25 +19,21 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
-    @CrossOrigin(origins = "*")
     @RequestMapping(path = "/authenticateUser" , method = RequestMethod.POST)
     public boolean authenticateUser(@RequestBody Auth user){
         return authService.authenticateUser(user);
     }
 
-    @CrossOrigin(origins = "*")
     @RequestMapping(path = "/generateTokenForUser/{username}" , method = RequestMethod.GET)
     public NewTokenResponse generateTokenForUser(@PathVariable("username") String username){
         return authService.generateNewTokenForUser(username);
     }
 
-    @CrossOrigin(origins = "*")
     @RequestMapping(path = "/validateTokenForUser" , method = RequestMethod.POST)
     public Boolean validateToken(@RequestBody Auth userToken){
         return authService.validateToken(userToken);
     }
 
-    @CrossOrigin(origins = "*")
     @RequestMapping(path = "/ecryptPass" , method = RequestMethod.GET)
     public String ecryptPass(){
         try{
@@ -54,9 +50,6 @@ public class AuthController {
             return "";
         }
     }
-
-
-
 
     public static String getSecurePassword(String passwordToHash, byte[] salt)
     {
