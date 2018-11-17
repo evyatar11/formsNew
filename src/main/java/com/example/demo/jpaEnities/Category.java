@@ -3,8 +3,6 @@ package com.example.demo.jpaEnities;
 import javax.persistence.*;
 import java.util.List;
 
-import static j2html.TagCreator.*;
-
 @Entity
 @Table(name = "USPBCategories")
 public class Category {
@@ -86,16 +84,4 @@ public class Category {
                 '}';
     }
 
-    public String toHtmlString(){
-        return fieldset(attrs("#" + categoryWeight +".section"),
-                h3(attrs("#" + "catTitle"),categoryName),
-                each(questionList, question ->
-                    div(attrs(".question"),
-                        h4(attrs(".questionText"),question.getQuestionContent()),
-                        question.toHtmlContainer(),
-                        span(attrs("#gradeAffect"))
-                        )
-                    )
-                ,div(attrs(".button"),text("Next"))).render();
-    }
 }

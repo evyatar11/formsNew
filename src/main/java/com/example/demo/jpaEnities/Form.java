@@ -53,12 +53,4 @@ public class Form {
                 '}';
     }
 
-    public String toHtmlString(){
-        String html = "";
-        for (Category category:categoriesList) {
-            html += category.toHtmlString();
-        }
-        return html;
-    }
-
 }

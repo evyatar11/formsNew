@@ -1,10 +1,6 @@
 package com.example.demo.jpaEnities;
 
-import j2html.tags.ContainerTag;
-
 import javax.persistence.*;
-
-import static j2html.TagCreator.*;
 
 @Entity
 @Table(name = "USPBAnswers")
@@ -62,7 +58,4 @@ public class Answer {
                 '}';
     }
 
-    public ContainerTag toHtmlContainer(){
-        return option(attrs("#" + String.valueOf(answerScore)),text(answerContent));
-    }
 }

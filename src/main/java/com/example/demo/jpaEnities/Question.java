@@ -1,12 +1,7 @@
 package com.example.demo.jpaEnities;
 
-import j2html.tags.ContainerTag;
-
 import javax.persistence.*;
 import java.util.List;
-
-import static j2html.TagCreator.*;
-import static j2html.TagCreator.text;
 
 @Entity
 @Table(name = "USPBQuestions")
@@ -76,10 +71,6 @@ public class Question {
                 ", categoryId=" + categoryId +
                 ", answerList=" + answerList +
                 '}';
-    }
-
-    public ContainerTag toHtmlContainer(){
-        return select(attrs("#" + questionWeight + ".formsSelect"),option(attrs("#" + String.valueOf(-1)),text("Click to select an answer")),each(answerList, answer -> answer.toHtmlContainer()));
     }
 
 }

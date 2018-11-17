@@ -1,6 +1,8 @@
 package com.example.demo.jpaEnities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Users")
@@ -8,7 +10,7 @@ public class User {
     @Id
     @GeneratedValue
     @Column(name="id")
-    private int id;
+    private Long id;
     @Column(name="username")
     private String username;
     @Column(name="password")
@@ -17,13 +19,18 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Token token;
 
+    @OneToMany(
+            mappedBy = "user"
+    )
+    private List<Prospect> prospects = new ArrayList<>();
+
     public User(){}//No argument constructor for JPA
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -41,6 +48,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Prospect> getProspects() {
+        return prospects;
+    }
+
+    public void setProspects(List<Prospect> prospects) {
+        this.prospects = prospects;
     }
 
     @Override
